@@ -9,6 +9,12 @@ import javax.swing.JTextField;
 public class LoginPanel extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
+	private JLabel lblError;
+	
+	public void setError(String error) {
+		lblError.setText(error);
+	}
+	
 	public LoginPanel() {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
@@ -42,7 +48,7 @@ public class LoginPanel extends JPanel {
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblError = new JLabel("");
+		lblError = new JLabel("");
 		lblError.setForeground(new Color(255, 0, 0));
 		lblError.setBounds(36, 105, 45, 13);
 		panel.add(lblError);

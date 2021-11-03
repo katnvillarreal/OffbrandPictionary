@@ -10,6 +10,12 @@ public class CreateAccountPanel extends JPanel{
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JLabel lblError;
+	
+	public void setError(String error) {
+		lblError.setText(error);
+	}
+	
 	public CreateAccountPanel() {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
@@ -52,7 +58,7 @@ public class CreateAccountPanel extends JPanel{
 		panel.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JLabel lblError = new JLabel("");
+		lblError = new JLabel("");
 		lblError.setForeground(new Color(255, 0, 0));
 		lblError.setBounds(34, 65, 230, 13);
 		panel.add(lblError);
