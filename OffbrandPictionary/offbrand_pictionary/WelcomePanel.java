@@ -5,11 +5,9 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class WelcomePanel extends JPanel {
-	public WelcomePanel() {
+	public WelcomePanel(WelcomeControl wc) {
 		setBackground(Color.BLACK);
 		setLayout(null);
 		
@@ -26,14 +24,12 @@ public class WelcomePanel extends JPanel {
 		
 		JButton btnLogIn = new JButton("Log in");
 		btnLogIn.setBackground(new Color(0, 0, 0));
-		btnLogIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnLogIn.addActionListener(wc);
 		btnLogIn.setBounds(272, 162, 111, 21);
 		panel.add(btnLogIn);
 		
 		JButton btnCreateAccount = new JButton("Create Account");
+		btnCreateAccount.addActionListener(wc);
 		btnCreateAccount.setBackground(new Color(0, 0, 0));
 		btnCreateAccount.setBounds(272, 193, 111, 21);
 		panel.add(btnCreateAccount);

@@ -11,11 +11,27 @@ public class LoginPanel extends JPanel {
 	private JTextField textField_1;
 	private JLabel lblError;
 	
+	public String getUsername() {
+	    return textField.getText();
+	}
+
+	public String getPassword() {
+		return textField_1.getText();
+	}
+
+	public void setUsername(String user) {
+		textField.setText(user);
+	}
+
+	public void setPassword(String pass) {
+		textField_1.setText(pass);
+	}
+	
 	public void setError(String error) {
 		lblError.setText(error);
 	}
 	
-	public LoginPanel() {
+	public LoginPanel(LoginControl lc) {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
 		
