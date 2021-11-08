@@ -66,7 +66,7 @@ public class GenLobbyPanel extends JPanel{
 		panel.add(rdbtnRounds);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(GenLobbyPanel.class.getResource("/offbrand_pictionary/pirate stickman.png")));
+		lblNewLabel.setIcon(new ImageIcon(GenLobbyPanel.class.getResource("/offbrand_pictionary/pirate_stickman.png")));
 		lblNewLabel.setBounds(106, -14, 289, 442);
 		panel.add(lblNewLabel);
 		
