@@ -9,9 +9,20 @@ import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSeparator;
+import javax.swing.JProgressBar;
 
 public class DrawerPanel extends JPanel{
-	public DrawerPanel() {
+	private JLabel lblWord;
+	
+	public String getWord() {
+		return lblWord.getText();
+	}
+	
+	public void setWord(String word) {
+		lblWord.setText(word);
+	}
+	
+	public DrawerPanel(DrawerControl dc) {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
 		
@@ -23,35 +34,37 @@ public class DrawerPanel extends JPanel{
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
-		panel_1.setBounds(10, 27, 418, 288);
+		panel_1.setBounds(20, 27, 418, 288);
 		panel.add(panel_1);
 		
-		JButton btnSize = new JButton("Size ++");
-		btnSize.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnSize.setBounds(10, 325, 67, 21);
-		panel.add(btnSize);
+		JButton btnSizeUp = new JButton("Size ++");
+		btnSizeUp.setBounds(20, 325, 67, 21);
+		btnSizeUp.addActionListener(dc);
+		panel.add(btnSizeUp);
 		
-		JButton btnSize_1 = new JButton("Size --");
-		btnSize_1.setBounds(80, 325, 67, 21);
-		panel.add(btnSize_1);
+		JButton btnSizeDown = new JButton("Size --");
+		btnSizeDown.setBounds(90, 325, 67, 21);
+		btnSizeDown.addActionListener(dc);
+		panel.add(btnSizeDown);
 		
 		JButton btnBlack = new JButton("Black");
-		btnBlack.setBounds(150, 325, 67, 21);
+		btnBlack.setBounds(160, 325, 67, 21);
+		btnBlack.addActionListener(dc);
 		panel.add(btnBlack);
 		
 		JButton btnRed = new JButton("Red");
-		btnRed.setBounds(227, 325, 60, 21);
+		btnRed.setBounds(237, 325, 60, 21);
+		btnRed.addActionListener(dc);
 		panel.add(btnRed);
 		
 		JButton btnGreen = new JButton("Green");
-		btnGreen.setBounds(297, 325, 60, 21);
+		btnGreen.setBounds(307, 325, 60, 21);
+		btnGreen.addActionListener(dc);
 		panel.add(btnGreen);
 		
 		JButton btnBlue = new JButton("Blue");
-		btnBlue.setBounds(367, 325, 60, 21);
+		btnBlue.setBounds(377, 325, 60, 21);
+		btnBlue.addActionListener(dc);
 		panel.add(btnBlue);
 		
 		JTextArea textArea = new JTextArea();
@@ -70,5 +83,9 @@ public class DrawerPanel extends JPanel{
 		JLabel lblWord = new JLabel("");
 		lblWord.setBounds(459, 73, 88, 13);
 		panel.add(lblWord);
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(20, 10, 418, 11);
+		panel.add(progressBar);
 	}
 }
