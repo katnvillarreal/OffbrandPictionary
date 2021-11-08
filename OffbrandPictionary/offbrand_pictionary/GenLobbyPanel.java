@@ -12,6 +12,20 @@ import javax.swing.ImageIcon;
 public class GenLobbyPanel extends JPanel{
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private JLabel lblError;
+	
+	public ButtonGroup getGroup() {
+		return buttonGroup;
+	}
+	
+	public ButtonGroup getGroup1() {
+		return buttonGroup_1;
+	}
+	
+	public void setError(String error) {
+		lblError.setText(error);
+	}
+	
 	public GenLobbyPanel(GenLobbyControl glc) {
 		setBackground(Color.BLACK);
 		setLayout(null);
@@ -35,18 +49,21 @@ public class GenLobbyPanel extends JPanel{
 		buttonGroup.add(rdbtnAnimals);
 		rdbtnAnimals.setBackground(new Color(143, 188, 143));
 		rdbtnAnimals.setBounds(51, 65, 103, 21);
+		rdbtnAnimals.setActionCommand("animals");
 		panel.add(rdbtnAnimals);
 		
 		JRadioButton rdbtnPlaces = new JRadioButton("places");
 		buttonGroup.add(rdbtnPlaces);
 		rdbtnPlaces.setBackground(new Color(143, 188, 143));
 		rdbtnPlaces.setBounds(51, 88, 103, 21);
+		rdbtnPlaces.setActionCommand("places");
 		panel.add(rdbtnPlaces);
 		
 		JRadioButton rdbtnSports = new JRadioButton("Sports");
 		buttonGroup.add(rdbtnSports);
 		rdbtnSports.setBackground(new Color(143, 188, 143));
 		rdbtnSports.setBounds(51, 111, 103, 21);
+		rdbtnSports.setActionCommand("sports");
 		panel.add(rdbtnSports);
 		
 		JLabel lblType = new JLabel("Type");
@@ -57,12 +74,14 @@ public class GenLobbyPanel extends JPanel{
 		buttonGroup_1.add(rdbtnPoints);
 		rdbtnPoints.setBackground(new Color(143, 188, 143));
 		rdbtnPoints.setBounds(51, 186, 103, 21);
+		rdbtnPoints.setActionCommand("points");
 		panel.add(rdbtnPoints);
 		
 		JRadioButton rdbtnRounds = new JRadioButton("Rounds");
 		buttonGroup_1.add(rdbtnRounds);
 		rdbtnRounds.setBackground(new Color(143, 188, 143));
 		rdbtnRounds.setBounds(51, 209, 103, 21);
+		rdbtnRounds.setActionCommand("rounds");
 		panel.add(rdbtnRounds);
 		
 		JLabel lblNewLabel = new JLabel("New label");
