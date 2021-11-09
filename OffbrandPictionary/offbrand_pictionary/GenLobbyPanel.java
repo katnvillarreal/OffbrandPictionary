@@ -91,7 +91,11 @@ public class GenLobbyPanel extends JPanel{
 		
 		JLabel lblError = new JLabel("");
 		lblError.setForeground(new Color(255, 0, 0));
-		lblError.setBounds(27, 253, 179, 13);
+		lblError.setBounds(10, 21, 179, 13);
 		panel.add(lblError);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(10, 249, 85, 21);
+		panel.add(btnCancel);
 	}
 }
