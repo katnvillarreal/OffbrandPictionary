@@ -25,12 +25,10 @@ public class WelcomePanel extends JPanel {
 		btnLogIn.addActionListener(wc);
 		panel.add(btnLogIn);
 		
-		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(WelcomePanel.class.getResource("/offbrand_pictionary/offbrand.png")));
 		lblNewLabel_1.setBounds(188, 10, 215, 125);
 		panel.add(lblNewLabel_1);
-		
 		
 		JButton btnCreateAccount = new JButton("Create Account");
 		btnCreateAccount.setBackground(new Color(0, 0, 0));

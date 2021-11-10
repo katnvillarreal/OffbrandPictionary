@@ -1,6 +1,8 @@
 package offbrand_pictionary;
 
 import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

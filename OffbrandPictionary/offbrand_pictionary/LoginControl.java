@@ -35,7 +35,7 @@ public class LoginControl implements ActionListener{
 		}
 	}
 	
-	public void LoginSucces() {
+	public void LoginSuccess() {
 		
 	}
 	
