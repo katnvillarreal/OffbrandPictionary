@@ -15,6 +15,7 @@ import javax.swing.JProgressBar;
 
 public class DrawerPanel extends JPanel{
 	private JLabel lblWord;
+	private PaintPanel canvas = new PaintPanel(418, 288);
 	
 	public String getWord() {
 		return lblWord.getText();
@@ -37,6 +38,7 @@ public class DrawerPanel extends JPanel{
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBounds(20, 27, 418, 288);
+		panel_1.add(canvas);
 		panel.add(panel_1);
 		
 		JButton btnSizeUp = new JButton("Size ++");
