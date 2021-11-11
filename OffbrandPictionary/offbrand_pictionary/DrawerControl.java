@@ -1,50 +1,26 @@
 package offbrand_pictionary;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import javax.swing.JPanel;
 
-public class DrawerControl implements ActionListener, MouseListener{
+public class DrawerControl implements ActionListener{
 	private JPanel container;
+	private BufferedImage img;
 	
 	public DrawerControl(JPanel container) {
 		this.container = container;
+		//this.client = client;
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
-		
-	}
+		String command = ae.getActionCommand();
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (command == "image") {
+			img = (BufferedImage) ae.getSource();
+			// try { client.sendToServer(img); }
+		    // catch (IOException e) { }
+		}
 	}
 }

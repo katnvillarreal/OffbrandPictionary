@@ -1,21 +1,24 @@
 package offbrand_pictionary;
 
 import javax.swing.JPanel;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.util.concurrent.*;
+
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JSeparator;
 import javax.swing.JProgressBar;
 
 public class DrawerPanel extends JPanel{
 	private JLabel lblWord;
-	private PaintPanel canvas = new PaintPanel(418, 288);
+	private BufferedImage img;
+	private PaintPanel canvas;
 	
 	public String getWord() {
 		return lblWord.getText();
@@ -38,37 +41,56 @@ public class DrawerPanel extends JPanel{
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBounds(20, 27, 418, 288);
+		canvas = new PaintPanel(418, 288, dc);
 		panel_1.add(canvas);
 		panel.add(panel_1);
 		
 		JButton btnSizeUp = new JButton("Size ++");
 		btnSizeUp.setBounds(20, 325, 67, 21);
-		btnSizeUp.addActionListener(dc);
+		btnSizeUp.addActionListener((ActionListener) new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                canvas.setSize(1);
+            }});
 		panel.add(btnSizeUp);
 		
 		JButton btnSizeDown = new JButton("Size --");
 		btnSizeDown.setBounds(90, 325, 67, 21);
-		btnSizeDown.addActionListener(dc);
+		btnSizeDown.addActionListener((ActionListener) new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                canvas.setSize(0);
+            }});
 		panel.add(btnSizeDown);
 		
 		JButton btnBlack = new JButton("Black");
 		btnBlack.setBounds(160, 325, 67, 21);
-		btnBlack.addActionListener(dc);
+		btnBlack.addActionListener((ActionListener) new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                canvas.setColor(Color.BLACK);
+            }});
 		panel.add(btnBlack);
 		
 		JButton btnRed = new JButton("Red");
 		btnRed.setBounds(237, 325, 60, 21);
-		btnRed.addActionListener(dc);
+		btnRed.addActionListener((ActionListener) new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                canvas.setColor(Color.RED);
+            }});
 		panel.add(btnRed);
 		
 		JButton btnGreen = new JButton("Green");
 		btnGreen.setBounds(307, 325, 60, 21);
-		btnGreen.addActionListener(dc);
+		btnGreen.addActionListener((ActionListener) new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                canvas.setColor(Color.GREEN);
+            }});
 		panel.add(btnGreen);
 		
 		JButton btnBlue = new JButton("Blue");
 		btnBlue.setBounds(377, 325, 60, 21);
-		btnBlue.addActionListener(dc);
+		btnBlue.addActionListener((ActionListener) new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                canvas.setColor(Color.BLUE);
+            }});
 		panel.add(btnBlue);
 		
 		JTextArea textArea = new JTextArea();

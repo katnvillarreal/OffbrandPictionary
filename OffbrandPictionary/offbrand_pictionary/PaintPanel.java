@@ -12,21 +12,31 @@ import javax.swing.*;
 class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
 
     private Color color = Color.BLACK;;
-    private Point end   = null;
+    private Point end = null;
 	private int n = 5;
+	private DrawerControl dc;
 	
     private BufferedImage bufImage = null;
     
-    public PaintPanel(int w, int h) {
+    public PaintPanel(int w, int h, DrawerControl dc) {
         setPreferredSize(new Dimension(w, h));
         setBackground(Color.white);
         
+        this.dc = dc;
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
     
     public void setColor(Color color) {
         this.color = color;
+    }
+    
+    public void setSize(int p) {
+        if (p == 0) {
+        	n--; 
+        	if (n < 1) { n = 1; }
+        }
+        else { n++; }
     }
     
     @Override public void paintComponent(Graphics g) {
@@ -56,12 +66,7 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
 		g2.drawLine(e.getX(), e.getY(), e.getX(), e.getY());
 		
 		repaint();
-		/* THIS SAVES THE IMAGE (WE JUST WANT TO SEND IT)
-		try {
-		    File outputfile = new File("saved.png");
-		    ImageIO.write(bufImage, "png", outputfile);
-		} catch (IOException ex) {}
-		*/
+		dc.actionPerformed(new ActionEvent(bufImage, 50, "image"));
     }
     
     public void mouseMoved  (MouseEvent e) {}
