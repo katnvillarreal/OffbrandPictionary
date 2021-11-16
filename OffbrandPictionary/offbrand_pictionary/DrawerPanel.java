@@ -106,7 +106,7 @@ public class DrawerPanel extends JPanel{
 		separator.setBounds(448, 62, 137, 2);
 		panel.add(separator);
 		
-		JLabel lblWord = new JLabel("");
+		lblWord = new JLabel("");
 		lblWord.setBounds(459, 73, 88, 13);
 		panel.add(lblWord);
 		

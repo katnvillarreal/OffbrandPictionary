@@ -44,6 +44,12 @@ public class GenLobbyControl implements ActionListener{
 		}
 	}
 	
+	public void success(boolean b) {
+		CardLayout cardLayout = (CardLayout)container.getLayout();
+		cardLayout.show(container,  "4");
+
+	}
+	
 	public void displayError(String error) {
 		GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(1);
 		lobbyPanel.setError(error);

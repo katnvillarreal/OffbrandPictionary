@@ -5,6 +5,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public class PlayerGUI extends JFrame {
+	
 	public PlayerGUI() {
 		Client client = new Client();
 		client.setHost("localhost");
@@ -25,10 +26,12 @@ public class PlayerGUI extends JFrame {
 	    GenLobbyControl glc = new GenLobbyControl(container, client);
 	    JoinLobbyControl jlc = new JoinLobbyControl(container);
 	    WaitingRoomControl wrc = new WaitingRoomControl(container);
-	    DrawerControl dc = new DrawerControl(container);
-	    GuessControl gc = new GuessControl(container);
+	    DrawerControl dc = new DrawerControl(container, client);
+	    GuessControl gc = new GuessControl(container, client);
 		
 		client.setLoginControl(lc);
+		client.setDrawerControl(dc);
+		client.setGuessControl(gc);
 		
 		JPanel view1 = new WelcomePanel(wc);
 		JPanel view2 = new LoginPanel(lc);

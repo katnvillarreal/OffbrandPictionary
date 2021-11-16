@@ -7,11 +7,12 @@ import javax.swing.JPanel;
 
 public class DrawerControl implements ActionListener{
 	private JPanel container;
+	private Client client;
 	private BufferedImage img;
 	
-	public DrawerControl(JPanel container) {
+	public DrawerControl(JPanel container, Client client) {
 		this.container = container;
-		//this.client = client;
+		this.client = client;
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
@@ -19,8 +20,13 @@ public class DrawerControl implements ActionListener{
 
 		if (command == "image") {
 			img = (BufferedImage) ae.getSource();
-			// try { client.sendToServer(img); }
-		    // catch (IOException e) { }
+			try { client.sendToServer(img); }
+		    catch (IOException e) { }
 		}
+	}
+	
+	public void setWord(String word) {
+		DrawerPanel drawPanel = (DrawerPanel)container.getComponent(1);
+		drawPanel.setWord(word);
 	}
 }
