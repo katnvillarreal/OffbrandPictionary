@@ -1,18 +1,19 @@
 DROP TABLE players;
 DROP TABLE words;
+DROP TABLE catergories;
 
 CREATE TABLE players (
     username            VARCHAR(25),
-    password            VARBINARY(25));
+    password            VARBINARY(25)
 );
 
 CREATE TABLE words (
     word                VARCHAR(128),
-    catergory           VARCHAR(25),
+    catergory           VARCHAR(25)
 );
 
 CREATE TABLE catergories (
-    catergory           VARCHAR(25),
+    catergory           VARCHAR(25)
 );
 
 ALTER TABLE players
