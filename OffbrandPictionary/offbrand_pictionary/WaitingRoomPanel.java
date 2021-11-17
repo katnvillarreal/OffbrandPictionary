@@ -45,9 +45,13 @@ public class WaitingRoomPanel extends JPanel{
 		panel.add(lblCode);
 		
 		JButton btnReadyUp = new JButton("Ready Up");
-		btnReadyUp.setBounds(44, 229, 85, 21);
+		btnReadyUp.setBounds(25, 229, 85, 21);
 		btnReadyUp.addActionListener(wrc);
 		panel.add(btnReadyUp);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(120, 228, 89, 23);
+		panel.add(btnCancel);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(243, 41, 162, 21);
@@ -57,5 +61,7 @@ public class WaitingRoomPanel extends JPanel{
 		lblNewLabel.setIcon(new ImageIcon(WaitingRoomPanel.class.getResource("/offbrand_pictionary/Stick_man.png")));
 		lblNewLabel.setBounds(262, 197, 168, 328);
 		panel.add(lblNewLabel);
+		
+		
 	}
 }

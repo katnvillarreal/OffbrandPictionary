@@ -13,6 +13,10 @@ public class CreateAccountData {
 		return password;
 	}
 	
+	public String getRePassword() {
+		return reenteredPassword;
+	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -21,7 +25,13 @@ public class CreateAccountData {
 		this.username = username;
 	}
 	
-	public CreateAccountData(String username, String password){
-		
+	public void setRePassword(String reenteredPassword) {
+		this.reenteredPassword = reenteredPassword;
+	}
+	
+	public CreateAccountData(String username, String password, String reenteredPassword) {
+		setPassword(password);
+		setUsername(username);
+		setRePassword(reenteredPassword);
 	}
 }

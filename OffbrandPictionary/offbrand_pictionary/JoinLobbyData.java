@@ -8,9 +8,21 @@ public class JoinLobbyData {
 		return nickname;
 	}
 	
-	
 	public String getLobbyCode() {
 		return lobbyCode;
+	}
+	
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
+	public void setLobbyCode(String lobbyCode) {
+		this.lobbyCode = lobbyCode;
+	}
+	
+	JoinLobbyData(String nickname, String lobbyCode) {
+		setNickname(nickname);
+		setLobbyCode(lobbyCode);
 	}
 	
 }

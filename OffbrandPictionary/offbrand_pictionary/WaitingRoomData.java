@@ -6,4 +6,8 @@ public class WaitingRoomData {
 	public String getLobbyCode() {
 		return lobbyCode;
 	}
+	
+	WaitingRoomData(String lobbyCode){
+		this.lobbyCode = lobbyCode;
+	}
 }

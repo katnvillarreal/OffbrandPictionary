@@ -8,6 +8,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JoinLobbyPanel extends JPanel{
 	private JTextField textField_Nickname;
@@ -76,7 +78,15 @@ public class JoinLobbyPanel extends JPanel{
 		
 		lblError = new JLabel("");
 		lblError.setForeground(new Color(255, 0, 0));
-		lblError.setBounds(10, 188, 142, 13);
+		lblError.setBounds(10, 218, 142, 13);
 		panel.add(lblError);
+		
+		JButton btnCanel = new JButton("Cancel");
+		btnCanel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCanel.setBounds(51, 186, 89, 21);
+		panel.add(btnCanel);
 	}
 }
