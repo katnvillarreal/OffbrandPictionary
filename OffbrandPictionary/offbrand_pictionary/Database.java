@@ -77,7 +77,7 @@ public class Database {
 	
 	public boolean playerLogin(String username, String password) {
 		String cmd = "select * from players where username='" + username 
-				     + "','" + password + "');";
+				     + "',aes_decrypt('" + password + "','key'));";
 		ArrayList<String> result = this.query(cmd);
 		if (result.isEmpty())  { return false; }
 		else { return true; }
