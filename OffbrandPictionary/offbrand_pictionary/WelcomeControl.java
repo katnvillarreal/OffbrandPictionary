@@ -26,5 +26,11 @@ public class WelcomeControl implements ActionListener{
 			CardLayout cardLayout = (CardLayout)container.getLayout();
 			cardLayout.show(container,  "3");
 		}
+		else if (action.equals("Join A Lobby")) {
+			JoinLobbyPanel joinPanel = (JoinLobbyPanel)container.getComponent(4);
+			joinPanel.setError("");
+			CardLayout cardLayout = (CardLayout)container.getLayout();
+			cardLayout.show(container,  "5");
+		}
 	}
 }

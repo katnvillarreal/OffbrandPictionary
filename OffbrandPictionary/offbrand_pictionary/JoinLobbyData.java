@@ -1,14 +1,16 @@
 package offbrand_pictionary;
 
-public class JoinLobbyData {
+import java.io.Serializable;
+
+public class JoinLobbyData implements Serializable{
 	private String nickname;
-	private String lobbyCode;
+	private int lobbyCode;
 	
 	public String getNickname() {
 		return nickname;
 	}
 	
-	public String getLobbyCode() {
+	public int getLobbyCode() {
 		return lobbyCode;
 	}
 	
@@ -16,11 +18,11 @@ public class JoinLobbyData {
 		this.nickname = nickname;
 	}
 	
-	public void setLobbyCode(String lobbyCode) {
+	public void setLobbyCode(int lobbyCode) {
 		this.lobbyCode = lobbyCode;
 	}
 	
-	JoinLobbyData(String nickname, String lobbyCode) {
+	JoinLobbyData(String nickname, int lobbyCode) {
 		setNickname(nickname);
 		setLobbyCode(lobbyCode);
 	}

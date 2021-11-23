@@ -18,10 +18,13 @@ public class LoginControl implements ActionListener{
 		String command = ae.getActionCommand();
 
 		if (command == "Cancel") {
+			LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
+			loginPanel.setUsername("");
+			loginPanel.setPassword("");
 			CardLayout cardLayout = (CardLayout)container.getLayout();
 		    cardLayout.show(container, "1");
 		}
-		else if (command == "Submit") {
+		else if (command == "Login") {
 			LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
 		    LoginData data = new LoginData(loginPanel.getUsername(), loginPanel.getPassword());
 		    
@@ -31,12 +34,21 @@ public class LoginControl implements ActionListener{
 		    }
 
 		    try { client.sendToServer(data); }
-		    catch (IOException e) { displayError("Error connecting to the server."); }
+		    catch (IOException e) { 
+		    	displayError("Error connecting to the server.");
+		    	e.printStackTrace();
+		    }
 		}
 	}
 	
-	public void LoginSuccess() {
-		
+	public void loginSuccess() {
+		LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
+		loginPanel.setUsername("");
+		loginPanel.setPassword("");
+		GenLobbyPanel genLobbyPanel = (GenLobbyPanel)container.getComponent(3);
+		genLobbyPanel.setError("");
+		CardLayout cardLayout = (CardLayout)container.getLayout();
+		cardLayout.show(container, "4");
 	}
 	
 	public void displayError(String error) {

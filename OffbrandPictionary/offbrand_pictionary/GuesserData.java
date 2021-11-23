@@ -1,6 +1,8 @@
 package offbrand_pictionary;
 
-public class GuesserData {
+import java.io.Serializable;
+
+public class GuesserData implements Serializable{
 	private String word;
 	private String drawer;
 	

@@ -9,12 +9,23 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 public class WaitingRoomPanel extends JPanel{
 	private JLabel lblCode;
+	private JTextArea playerNames;
 	
 	public String getLobbyCode() {
 		return lblCode.getText();
+	}
+	
+	public void setLobbyCode(String lobbyCode) {
+		lblCode.setText(lobbyCode);;
+	}
+	
+	public void addReadyPlayer(String str) {
+		playerNames.append(str + "\n");
 	}
 	
 	public WaitingRoomPanel(WaitingRoomControl wrc) {
@@ -23,13 +34,14 @@ public class WaitingRoomPanel extends JPanel{
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(143, 188, 143));
-		panel.setBounds(10, 10, 430, 280);
+		panel.setBounds(10, 11, 613, 382);
 		add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblLobbyCode = new JLabel("lobby Code");
+		JLabel lblLobbyCode = new JLabel("Lobby Code");
+		lblLobbyCode.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblLobbyCode.setBounds(36, 25, 108, 25);
+		lblLobbyCode.setBounds(36, 24, 159, 39);
 		panel.add(lblLobbyCode);
 		
 		JSeparator separator = new JSeparator();
@@ -37,30 +49,38 @@ public class WaitingRoomPanel extends JPanel{
 		panel.add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(25, 60, 119, 2);
+		separator_1.setBounds(25, 61, 184, 2);
 		panel.add(separator_1);
 		
 		lblCode = new JLabel("");
-		lblCode.setBounds(36, 70, 119, 19);
+		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblCode.setBounds(25, 70, 184, 50);
 		panel.add(lblCode);
 		
 		JButton btnReadyUp = new JButton("Ready Up");
-		btnReadyUp.setBounds(25, 229, 85, 21);
+		btnReadyUp.setForeground(Color.BLACK);
+		btnReadyUp.setBackground(Color.LIGHT_GRAY);
+		btnReadyUp.setBounds(25, 226, 199, 29);
 		btnReadyUp.addActionListener(wrc);
 		panel.add(btnReadyUp);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(120, 228, 89, 23);
+		btnCancel.setForeground(Color.BLACK);
+		btnCancel.setBackground(Color.LIGHT_GRAY);
+		btnCancel.setBounds(25, 266, 199, 29);
 		panel.add(btnCancel);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(243, 41, 162, 21);
-		panel.add(comboBox);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(WaitingRoomPanel.class.getResource("/offbrand_pictionary/Stick_man.png")));
-		lblNewLabel.setBounds(262, 197, 168, 328);
+		lblNewLabel.setBounds(445, 55, 168, 328);
 		panel.add(lblNewLabel);
+		
+		playerNames = new JTextArea();
+		playerNames.setFont(new Font("Monospaced", Font.PLAIN, 18));
+		playerNames.setBackground(Color.LIGHT_GRAY);
+		playerNames.setBounds(262, 11, 173, 344);
+		playerNames.setText("");
+		panel.add(playerNames);
 		
 		
 	}
