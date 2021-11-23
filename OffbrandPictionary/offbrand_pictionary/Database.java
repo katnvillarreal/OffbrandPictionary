@@ -67,7 +67,8 @@ public class Database {
 	    
 		if (result.isEmpty())  {
 			try {
-				this.executeDML("insert into players values('"+username+"',aes_encrypt('"+password+"','key'));");
+				String dml = "INSERT INTO players VALUES ('"+username+"', aes_encrypt('"+password+"', 'key'));";
+				this.executeDML(dml);
 				return true;
 			} catch (SQLException e) { e.printStackTrace(); }
 			return false;
