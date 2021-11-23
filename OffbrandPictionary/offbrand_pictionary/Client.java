@@ -71,6 +71,12 @@ public class Client extends AbstractClient {
 			else if (msg.equals("JoinError")) {
 				jlc.displayError("Lobby Entered does not exist");
 			}
+			else if (msg.equals("CorrectWord")) {
+				gc.correctWord();
+			}
+			else if (msg.equals("IncorrectWord")) {
+				gc.displayError("Guess is Incorrect");
+			}
 		}
 		else if (arg0 instanceof BufferedImage) {
 			BufferedImage img = (BufferedImage)arg0;

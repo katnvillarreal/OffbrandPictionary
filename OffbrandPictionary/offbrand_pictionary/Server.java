@@ -12,6 +12,7 @@ public class Server extends AbstractServer {
 	private Database database;
 	private int lobbycode;
 	private String catChoice;
+	private String currentWord;
 	
 	// Class Constructor
 	public Server() {
@@ -102,6 +103,18 @@ public class Server extends AbstractServer {
 				result = "JoinSuccess";
 			}
 			else { result = "JoinError"; }
+			try { arg1.sendToClient(result); }
+			catch (IOException e) { return; }
+		}
+		// When getting a GuesserData Object
+		else if (arg0 instanceof GuesserData) {
+			System.out.println("GuesserData received");
+			GuesserData data = (GuesserData)arg0;
+			Object result;
+			if(data.getWord().equals(currentWord)) {
+				result = "CorrectWord";
+			}
+			else { result = "IncorrectWord"; }
 			try { arg1.sendToClient(result); }
 			catch (IOException e) { return; }
 		}

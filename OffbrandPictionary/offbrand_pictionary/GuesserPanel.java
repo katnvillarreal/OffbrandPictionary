@@ -15,25 +15,35 @@ import javax.swing.JTextField;
 
 public class GuesserPanel extends JPanel {
 	private JTextField textField_Guess;
-	private JLabel lblAnswer;
+	private JLabel lblError;
 	private JLabel lblSetDrawer;
 	
+	// Getters
 	public String getWord() {
-		return lblAnswer.getText();
+		return textField_Guess.getText();
 	}
 	
 	public String getDrawer() {
 		return lblSetDrawer.getText();
 	}
 	
+	// Setters
 	public void setWord(String word) {
-		lblAnswer.setText(word);
+		textField_Guess.setText(word);
 	}
 	
 	public void setDrawer(String drawer) {
 		lblSetDrawer.setText(drawer);
 	}
+	public void setError(String error) {
+		lblError.setText(error);
+	}
 	
+	public void correctGuess() {
+		textField_Guess.setEditable(false);
+	}
+	
+	// Create the 
 	public GuesserPanel(GuessControl gc) {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
@@ -64,17 +74,13 @@ public class GuesserPanel extends JPanel {
 		
 		textField_Guess = new JTextField();
 		textField_Guess.setBounds(448, 296, 157, 19);
+		textField_Guess.setEditable(true);
 		panel.add(textField_Guess);
 		textField_Guess.setColumns(10);
 		
-		JLabel lblTheWord = new JLabel("The Word:");
-		lblTheWord.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblTheWord.setBounds(20, 339, 79, 19);
-		panel.add(lblTheWord);
-		
-		lblAnswer = new JLabel("");
-		lblAnswer.setBounds(95, 339, 177, 18);
-		panel.add(lblAnswer);
+		lblError = new JLabel("");
+		lblError.setBounds(448, 357, 157, 18);
+		panel.add(lblError);
 		
 		JLabel lblDrawer = new JLabel("Drawer:");
 		lblDrawer.setFont(new Font("Tahoma", Font.PLAIN, 15));
