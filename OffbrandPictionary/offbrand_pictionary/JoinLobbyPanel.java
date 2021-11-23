@@ -67,11 +67,13 @@ public class JoinLobbyPanel extends JPanel{
 		panel.add(lblLobbyCode);
 		
 		textField_Nickname = new JTextField();
+		textField_Nickname.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_Nickname.setBounds(127, 102, 122, 21);
 		panel.add(textField_Nickname);
 		textField_Nickname.setColumns(10);
 		
 		textField_LobbyCode = new JTextField();
+		textField_LobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_LobbyCode.setBounds(127, 126, 122, 21);
 		panel.add(textField_LobbyCode);
 		textField_LobbyCode.setColumns(10);
@@ -100,4 +102,5 @@ public class JoinLobbyPanel extends JPanel{
 		btnCanel.setBounds(55, 245, 161, 38);
 		panel.add(btnCanel);
 	}
+
 }

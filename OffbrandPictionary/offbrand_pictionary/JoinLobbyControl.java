@@ -20,9 +20,9 @@ public class JoinLobbyControl implements ActionListener{
 		// Get the name of the button clicked.
 	    String command = ae.getActionCommand();
 
-	    // If Cancel is clicked then go back to the WelcomePanel
+	    // If Cancel is clicked then go back to the Welcome Panel
 	    if (command == "Cancel") {
-	    	JoinLobbyPanel joinLobbyPanel = (JoinLobbyPanel)container.getComponent(5);
+	    	JoinLobbyPanel joinLobbyPanel = (JoinLobbyPanel)container.getComponent(4);
 	    	joinLobbyPanel.setNickname("");
 	    	joinLobbyPanel.setLobbyCode("");
 	    	CardLayout cardLayout = (CardLayout)container.getLayout();
@@ -31,7 +31,7 @@ public class JoinLobbyControl implements ActionListener{
 
 	    // If the submit button is clicked check if it works
 	    else if (command == "Submit") {
-	    	JoinLobbyPanel joinLobbyPanel = (JoinLobbyPanel)container.getComponent(5);
+	    	JoinLobbyPanel joinLobbyPanel = (JoinLobbyPanel)container.getComponent(4);
 	    	String nickname = joinLobbyPanel.getNickname();
 	    	String lobbyCode = joinLobbyPanel.getLobbyCode();
 	    	
@@ -48,6 +48,9 @@ public class JoinLobbyControl implements ActionListener{
 	
 	// When account creation is successful go to the GenLobbyPanel
 	public void JoinLobbySuccess() {
+		JoinLobbyPanel joinLobbyPanel = (JoinLobbyPanel)container.getComponent(4);
+    	joinLobbyPanel.setNickname("");
+    	joinLobbyPanel.setLobbyCode("");
 		CardLayout cardLayout = (CardLayout)container.getLayout();
 		cardLayout.show(container, "6");
 	}
