@@ -10,7 +10,7 @@ import ocsf.server.ConnectionToClient;
 public class Server extends AbstractServer {
 	// Set private data variables
 	private Database database;
-	private String lobbycode;
+	private int lobbycode;
 	private String catChoice;
 	
 	// Class Constructor
@@ -26,11 +26,11 @@ public class Server extends AbstractServer {
 	public void setCatChoice(String catChoice) {
 		this.catChoice = catChoice;
 	}
-	public void setLobbyCode(String lobbyCode) {
+	public void setLobbyCode(int lobbyCode) {
 		this.lobbycode = lobbyCode;
 	}
 	// Getters
-	public String getLobbyCode() {return lobbycode;}
+	public int getLobbyCode() {return lobbycode;}
 	public String getCatChoice() {return catChoice;}
 	
 	// Start the server
@@ -46,6 +46,7 @@ public class Server extends AbstractServer {
 	// Handle message from client
 	public void handleMessageFromClient(Object arg0, ConnectionToClient arg1) {
 		// When getting an image from the drawer panel
+		System.out.println("Message received from Client");
 		if (arg0 instanceof BufferedImage) {
 			System.out.println("Buffered Image received");
 			BufferedImage img = (BufferedImage)arg0;
@@ -72,7 +73,7 @@ public class Server extends AbstractServer {
 			System.out.println("LoginData received");
 			LoginData data = (LoginData)arg0;
 			Object result;
-			if(database.playerLogin(data.getUsername(), data.getPassword())) {
+			if(database.verifyAccount(data.getUsername(), data.getPassword())) {
 				result = "LoginSuccessful";
 			}
 			else { result = "LoginError"; }
@@ -86,8 +87,8 @@ public class Server extends AbstractServer {
 			GenLobbyData data = (GenLobbyData)arg0;
 			
 			catChoice = data.getCat();
-			int lobbyCode = data.getCode();
-			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbyCode);
+			lobbycode = data.getCode();
+			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbycode);
 			
 			try { arg1.sendToClient(result); }
 			catch (IOException e) { return; }
@@ -95,7 +96,13 @@ public class Server extends AbstractServer {
 		// When getting a JoinLobbyData object
 		else if (arg0 instanceof JoinLobbyData) {
 			System.out.println("JoinLobbyData received");
-			try { arg1.sendToClient(arg0); }
+			JoinLobbyData data = (JoinLobbyData)arg0;
+			Object result;
+			if(data.getLobbyCode()== lobbycode) {
+				result = "JoinSuccess";
+			}
+			else { result = "JoinError"; }
+			try { arg1.sendToClient(result); }
 			catch (IOException e) { return; }
 		}
 	}

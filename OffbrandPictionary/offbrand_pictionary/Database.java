@@ -51,7 +51,7 @@ public class Database {
 	
 	// Method for verifying a username and password.
 	public boolean verifyAccount(String username, String password) {
-		String cmd = "select * from players where username='"+username+"' and password='"+password+"';";
+		String cmd = "select * from players where username='"+username+"' and password=aes_decrypt('"+password+"','key');";
 		ArrayList<String> result = this.query(cmd);
 	    
 		if (!result.isEmpty())
@@ -73,14 +73,6 @@ public class Database {
 			return false;
 		}
 		else { return false; }
-	}
-	
-	public boolean playerLogin(String username, String password) {
-		String cmd = "select * from players where username='" + username 
-				     + "',aes_decrypt('" + password + "','key'));";
-		ArrayList<String> result = this.query(cmd);
-		if (result.isEmpty())  { return false; }
-		else { return true; }
 	}
 	
 	public String getWord(String choice) {
