@@ -1,6 +1,8 @@
 package offbrand_pictionary;
 
-public class JoinLobbyData {
+import java.io.Serializable;
+
+public class JoinLobbyData implements Serializable{
 	private String nickname;
 	private int lobbyCode;
 	

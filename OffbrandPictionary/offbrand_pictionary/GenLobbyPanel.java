@@ -74,7 +74,7 @@ public class GenLobbyPanel extends JPanel{
 		lblNewLabel.setBounds(324, -2, 289, 442);
 		panel.add(lblNewLabel);
 		
-		JLabel lblError = new JLabel("");
+		lblError = new JLabel("");
 		lblError.setForeground(new Color(255, 0, 0));
 		lblError.setBounds(10, 21, 179, 13);
 		panel.add(lblError);

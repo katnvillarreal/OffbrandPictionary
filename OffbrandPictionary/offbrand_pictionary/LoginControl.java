@@ -34,12 +34,16 @@ public class LoginControl implements ActionListener{
 		    }
 
 		    try { client.sendToServer(data); }
-		    catch (IOException e) { displayError("Error connecting to the server."); }
+		    catch (IOException e) { 
+		    	displayError("Error connecting to the server.");
+		    	e.printStackTrace();
+		    }
 		}
 	}
 	
 	public void loginSuccess() {
-		GenLobbyPanel genLobbyPanel = (GenLobbyPanel)container.getComponent(4);
+		System.out.println("i run");
+		GenLobbyPanel genLobbyPanel = (GenLobbyPanel)container.getComponent(3);
 		genLobbyPanel.setError("");
 		CardLayout cardLayout = (CardLayout)container.getLayout();
 		cardLayout.show(container, "4");

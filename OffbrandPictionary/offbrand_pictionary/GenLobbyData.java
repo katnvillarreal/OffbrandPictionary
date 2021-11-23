@@ -1,6 +1,8 @@
 package offbrand_pictionary;
 
-public class GenLobbyData {
+import java.io.Serializable;
+
+public class GenLobbyData implements Serializable{
 	private String catChoice;
 	private String typeChoice;
 	private int lobbyCode;

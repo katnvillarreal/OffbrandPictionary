@@ -1,6 +1,8 @@
 package offbrand_pictionary;
 
-public class CreateAccountData {
+import java.io.Serializable;
+
+public class CreateAccountData implements Serializable{
 	private String username;
 	private String password;
 	private String reenteredPassword;

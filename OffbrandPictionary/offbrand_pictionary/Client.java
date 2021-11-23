@@ -53,22 +53,22 @@ public class Client extends AbstractClient {
 				// client needs to send words
 				dc.setWord(choice[0]);
 			}
-			else if (msg == "LoginSuccessful") {
+			else if (msg.equals("LoginSuccessful")) {
 				lc.loginSuccess();
 			}
-			else if (msg == "ErrorUserPass") {
+			else if (msg.equals("LoginError")) {
 				lc.displayError("The username/password are incorrect.");
 			}
-			else if (msg == "CreateAccountSuccessful") {
+			else if (msg.equals("CreateAccountSuccessful")) {
 				cac.createAccountSuccess();
 			}
-			else if (msg == "ErrorUsername") {
+			else if (msg.equals("ErrorUsername")) {
 				cac.displayError("The username is already in use.");
 			}
-			else if (msg == "JoinSuccess") {
+			else if (msg.equals("JoinSuccess")) {
 				jlc.JoinLobbySuccess();
 			}
-			else if (msg == "JoinError") {
+			else if (msg.equals("JoinError")) {
 				jlc.displayError("Lobby Entered does not exist");
 			}
 		}

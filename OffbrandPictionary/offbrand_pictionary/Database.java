@@ -51,7 +51,7 @@ public class Database {
 	
 	// Method for verifying a username and password.
 	public boolean verifyAccount(String username, String password) {
-		String cmd = "select * from players where username='"+username+"' and password=aes_encrypt('" + password + "','key');";
+		String cmd = "select * from players where username='"+username+"' and password=aes_encrypt('"+ password + "','key');";
 		ArrayList<String> result = this.query(cmd);
 	    
 		if (!result.isEmpty())

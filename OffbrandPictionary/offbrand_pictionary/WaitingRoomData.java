@@ -1,6 +1,8 @@
 package offbrand_pictionary;
 
-public class WaitingRoomData {
+import java.io.Serializable;
+
+public class WaitingRoomData implements Serializable{
 	private String lobbyCode;
 	
 	public String getLobbyCode() {
