@@ -75,6 +75,14 @@ public class Database {
 		else { return false; }
 	}
 	
+	public boolean playerLogin(String username, String password) {
+		String cmd = "select * from players where username='" + username 
+				     + "','" + password + "');";
+		ArrayList<String> result = this.query(cmd);
+		if (result.isEmpty())  { return false; }
+		else { return true; }
+	}
+	
 	public String getWord(String choice) {
 		String cmd = "select * from words order by = RAND() where category='"+choice+"';";
 		ArrayList<String> result = this.query(cmd);
