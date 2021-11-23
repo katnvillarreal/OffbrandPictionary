@@ -22,11 +22,13 @@ public class GenLobbyControl implements ActionListener{
 		String command = ae.getActionCommand();
 		
 		if (command == "Cancel") {
+			GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(3);
+			lobbyPanel.setGroup();
 			CardLayout cardLayout = (CardLayout)container.getLayout();
 		    cardLayout.show(container, "1");
 		}
-		else if (command == "Gen lobby") {
-			GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(1);
+		else if (command == "Generate Lobby") {
+			GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(3);
 			ButtonGroup catGroup = lobbyPanel.getGroup();
 			int lobbyCode = gen();
 		    GenLobbyData data = new GenLobbyData(catGroup.getSelection().getActionCommand(), lobbyCode);

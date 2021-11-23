@@ -10,6 +10,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GenLobbyPanel extends JPanel{
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -17,6 +19,10 @@ public class GenLobbyPanel extends JPanel{
 	
 	public ButtonGroup getGroup() {
 		return buttonGroup;
+	}
+	
+	public void setGroup() {
+		buttonGroup.clearSelection();
 	}
 	
 	public void setError(String error) {
@@ -34,22 +40,24 @@ public class GenLobbyPanel extends JPanel{
 		panel.setLayout(null);
 		
 		JButton btnStartGame = new JButton("Generate Lobby");
+		btnStartGame.setForeground(Color.BLACK);
+		btnStartGame.setBackground(Color.LIGHT_GRAY);
 		btnStartGame.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnStartGame.setBounds(71, 246, 155, 47);
+		btnStartGame.setBounds(71, 231, 155, 47);
 		btnStartGame.addActionListener(glc);
 		panel.add(btnStartGame);
 		
 		JLabel lblCategories = new JLabel("Select a Category");
-		lblCategories.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCategories.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCategories.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		lblCategories.setBounds(28, 21, 286, 47);
+		lblCategories.setBounds(53, 21, 224, 47);
 		panel.add(lblCategories);
 		
 		JRadioButton rdbtnAnimals = new JRadioButton("Animals");
 		rdbtnAnimals.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonGroup.add(rdbtnAnimals);
 		rdbtnAnimals.setBackground(new Color(143, 188, 143));
-		rdbtnAnimals.setBounds(92, 75, 141, 29);
+		rdbtnAnimals.setBounds(85, 75, 141, 29);
 		rdbtnAnimals.setActionCommand("animals");
 		panel.add(rdbtnAnimals);
 		
@@ -57,7 +65,7 @@ public class GenLobbyPanel extends JPanel{
 		rdbtnPlaces.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonGroup.add(rdbtnPlaces);
 		rdbtnPlaces.setBackground(new Color(143, 188, 143));
-		rdbtnPlaces.setBounds(92, 108, 117, 29);
+		rdbtnPlaces.setBounds(85, 108, 117, 29);
 		rdbtnPlaces.setActionCommand("places");
 		panel.add(rdbtnPlaces);
 		
@@ -65,7 +73,7 @@ public class GenLobbyPanel extends JPanel{
 		rdbtnSports.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonGroup.add(rdbtnSports);
 		rdbtnSports.setBackground(new Color(143, 188, 143));
-		rdbtnSports.setBounds(92, 140, 117, 33);
+		rdbtnSports.setBounds(85, 140, 117, 33);
 		rdbtnSports.setActionCommand("sports");
 		panel.add(rdbtnSports);
 		
@@ -80,7 +88,11 @@ public class GenLobbyPanel extends JPanel{
 		panel.add(lblError);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(71, 314, 155, 21);
+		btnCancel.setForeground(Color.BLACK);
+		btnCancel.setBackground(Color.LIGHT_GRAY);
+		btnCancel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnCancel.addActionListener(glc);
+		btnCancel.setBounds(71, 289, 155, 46);
 		panel.add(btnCancel);
 	}
 }

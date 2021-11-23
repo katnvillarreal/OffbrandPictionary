@@ -42,7 +42,9 @@ public class LoginControl implements ActionListener{
 	}
 	
 	public void loginSuccess() {
-		System.out.println("i run");
+		LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
+		loginPanel.setUsername("");
+		loginPanel.setPassword("");
 		GenLobbyPanel genLobbyPanel = (GenLobbyPanel)container.getComponent(3);
 		genLobbyPanel.setError("");
 		CardLayout cardLayout = (CardLayout)container.getLayout();

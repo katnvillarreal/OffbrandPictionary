@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 public class WaitingRoomPanel extends JPanel{
 	private JLabel lblCode;
@@ -38,6 +39,7 @@ public class WaitingRoomPanel extends JPanel{
 		panel.setLayout(null);
 		
 		JLabel lblLobbyCode = new JLabel("Lobby Code");
+		lblLobbyCode.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblLobbyCode.setBounds(36, 24, 159, 39);
 		panel.add(lblLobbyCode);
@@ -52,16 +54,20 @@ public class WaitingRoomPanel extends JPanel{
 		
 		lblCode = new JLabel("");
 		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCode.setBounds(36, 70, 159, 51);
+		lblCode.setBounds(25, 70, 184, 50);
 		panel.add(lblCode);
 		
 		JButton btnReadyUp = new JButton("Ready Up");
-		btnReadyUp.setBounds(25, 205, 199, 29);
+		btnReadyUp.setForeground(Color.BLACK);
+		btnReadyUp.setBackground(Color.LIGHT_GRAY);
+		btnReadyUp.setBounds(25, 226, 199, 29);
 		btnReadyUp.addActionListener(wrc);
 		panel.add(btnReadyUp);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(25, 263, 199, 23);
+		btnCancel.setForeground(Color.BLACK);
+		btnCancel.setBackground(Color.LIGHT_GRAY);
+		btnCancel.setBounds(25, 266, 199, 29);
 		panel.add(btnCancel);
 		
 		JLabel lblNewLabel = new JLabel("New label");
@@ -70,8 +76,9 @@ public class WaitingRoomPanel extends JPanel{
 		panel.add(lblNewLabel);
 		
 		playerNames = new JTextArea();
+		playerNames.setFont(new Font("Monospaced", Font.PLAIN, 18));
 		playerNames.setBackground(Color.LIGHT_GRAY);
-		playerNames.setBounds(262, 11, 158, 344);
+		playerNames.setBounds(262, 11, 173, 344);
 		playerNames.setText("");
 		panel.add(playerNames);
 		

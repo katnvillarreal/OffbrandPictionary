@@ -56,7 +56,11 @@ public class CreateAccountControl implements ActionListener{
 	
 	// When account creation is successful go to the GenLobbyPanel
 	public void createAccountSuccess() {
-		GenLobbyPanel genLobbyPanel = (GenLobbyPanel)container.getComponent(4);
+		CreateAccountPanel createAccountPanel = (CreateAccountPanel)container.getComponent(2);
+    	createAccountPanel.setUsername("");
+    	createAccountPanel.setPassword("");
+    	createAccountPanel.setPassword("");
+		GenLobbyPanel genLobbyPanel = (GenLobbyPanel)container.getComponent(3);
 		genLobbyPanel.setError("");
 		CardLayout cardLayout = (CardLayout)container.getLayout();
 		cardLayout.show(container, "4");
