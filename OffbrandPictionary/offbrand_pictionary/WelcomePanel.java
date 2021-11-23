@@ -54,6 +54,9 @@ public class WelcomePanel extends JPanel {
 		JButton btnJoinALobby = new JButton("Join A Lobby");
 		btnJoinALobby.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnJoinALobby.setBounds(344, 159, 167, 33);
+		btnJoinALobby.setForeground(Color.BLACK);
+		btnJoinALobby.setBackground(Color.LIGHT_GRAY);
+		btnJoinALobby.addActionListener(wc);
 		panel.add(btnJoinALobby);
 		
 		JLabel lblOr = new JLabel("- OR -");

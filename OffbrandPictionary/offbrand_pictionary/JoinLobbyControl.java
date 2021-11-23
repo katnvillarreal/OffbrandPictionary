@@ -22,6 +22,9 @@ public class JoinLobbyControl implements ActionListener{
 
 	    // If Cancel is clicked then go back to the WelcomePanel
 	    if (command == "Cancel") {
+	    	JoinLobbyPanel joinLobbyPanel = (JoinLobbyPanel)container.getComponent(5);
+	    	joinLobbyPanel.setNickname("");
+	    	joinLobbyPanel.setLobbyCode("");
 	    	CardLayout cardLayout = (CardLayout)container.getLayout();
 	    	cardLayout.show(container, "1");
 	    }
@@ -37,7 +40,7 @@ public class JoinLobbyControl implements ActionListener{
 	    		displayError("You must enter a nickname and lobby code.");
 	    		return;
 	    	}
-	    	JoinLobbyData joinLobbyData  = new JoinLobbyData(nickname, lobbyCode);
+	    	JoinLobbyData joinLobbyData  = new JoinLobbyData(nickname, Integer.parseInt(lobbyCode));
 	    	try { client.sendToServer(joinLobbyData); }
 		    catch (IOException e) { displayError("Lobby does not exist."); }
 	    }

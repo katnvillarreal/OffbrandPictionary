@@ -59,7 +59,8 @@ public class PlayerGUI extends JFrame {
 		cardLayout.show(container, "1");
 		
 		this.add(container, BorderLayout.CENTER);
-		this.setSize(550, 350);
+		this.setSize(650, 440);
+		this.setResizable(false);
 	    this.setVisible(true);
 	}
 	

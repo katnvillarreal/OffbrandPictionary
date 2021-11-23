@@ -18,6 +18,9 @@ public class LoginControl implements ActionListener{
 		String command = ae.getActionCommand();
 
 		if (command == "Cancel") {
+			LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
+			loginPanel.setUsername("");
+			loginPanel.setPassword("");
 			CardLayout cardLayout = (CardLayout)container.getLayout();
 		    cardLayout.show(container, "1");
 		}

@@ -23,13 +23,16 @@ public class CreateAccountControl implements ActionListener{
 
 	    // If Cancel is clicked then go back to the WelcomePanel
 	    if (command == "Cancel") {
+	    	CreateAccountPanel createAccountPanel = (CreateAccountPanel)container.getComponent(2);
+	    	createAccountPanel.setUsername("");
+	    	createAccountPanel.setPassword("");
+	    	createAccountPanel.setPassword("");
 	    	CardLayout cardLayout = (CardLayout)container.getLayout();
 	    	cardLayout.show(container, "1");
 	    }
-
 	    // If the submit button is clicked check if it works
 	    else if (command == "Submit") {
-	    	CreateAccountPanel createAccountPanel = (CreateAccountPanel)container.getComponent(3);
+	    	CreateAccountPanel createAccountPanel = (CreateAccountPanel)container.getComponent(2);
 	    	String username = createAccountPanel.getUsername();
 	    	String password = createAccountPanel.getPassword();
 	    	String passwordVerify = createAccountPanel.getReenteredPassword();
@@ -61,7 +64,7 @@ public class CreateAccountControl implements ActionListener{
 	  
 	// Display an error on CreateAccountPanel
 	public void displayError(String error) {
-		CreateAccountPanel createAccountPanel = (CreateAccountPanel)container.getComponent(3);
+		CreateAccountPanel createAccountPanel = (CreateAccountPanel)container.getComponent(2);
 		createAccountPanel.setError(error);
 	}
 }

@@ -24,6 +24,14 @@ public class JoinLobbyPanel extends JPanel{
 		return textField_LobbyCode.getText();
 	}
 	
+	public void setNickname(String nick) {
+		textField_Nickname.setText(nick);
+	}
+	
+	public void setLobbyCode(String code) {
+		textField_LobbyCode.setText(code);
+	}
+	
 	public void setError(String error) {
 		lblError.setText(error);
 	}
@@ -69,7 +77,9 @@ public class JoinLobbyPanel extends JPanel{
 		textField_LobbyCode.setColumns(10);
 		
 		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(55, 209, 161, 38);
+		btnSubmit.setForeground(Color.BLACK);
+		btnSubmit.setBackground(Color.LIGHT_GRAY);
+		btnSubmit.setBounds(55, 193, 161, 38);
 		btnSubmit.addActionListener(jlc);
 		panel.add(btnSubmit);
 		
@@ -84,8 +94,10 @@ public class JoinLobbyPanel extends JPanel{
 		panel.add(lblError);
 		
 		JButton btnCanel = new JButton("Cancel");
+		btnCanel.setForeground(Color.BLACK);
+		btnCanel.setBackground(Color.LIGHT_GRAY);
 		btnCanel.addActionListener(jlc);
-		btnCanel.setBounds(51, 186, 89, 21);
+		btnCanel.setBounds(55, 245, 161, 38);
 		panel.add(btnCanel);
 	}
 }
