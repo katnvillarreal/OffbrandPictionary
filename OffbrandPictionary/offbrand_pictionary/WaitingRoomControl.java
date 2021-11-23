@@ -24,7 +24,7 @@ public class WaitingRoomControl implements ActionListener{
 	    
 	    // If Ready Up is pressed
 	    if (command == "Ready Up") {
-	    	WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(6);
+	    	WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
 	    	String lobbyCode = waitingRoomPanel.getLobbyCode();
 	    	WaitingRoomData waitingRoomData  = new WaitingRoomData(lobbyCode);
 	    	try { client.sendToServer(waitingRoomData); }
@@ -34,12 +34,12 @@ public class WaitingRoomControl implements ActionListener{
 	    // If cancel button is pressed go back to JoinLobbyPanel
 	    else if(command == "Cancel") {
 	    	CardLayout cardLayout = (CardLayout)container.getLayout();
-	    	cardLayout.show(container, "5");
+	    	cardLayout.show(container, "1");
 	    }
 	}
 	
 	public void setLobbyCode(String lobbyCode) {
-		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(6);
+		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
 		waitingRoomPanel.setLobbyCode(lobbyCode);
 	}
 }

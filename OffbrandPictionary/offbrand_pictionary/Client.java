@@ -77,9 +77,11 @@ public class Client extends AbstractClient {
 			gc.setImage(img);
 		}
 		else if (arg0 instanceof GenLobbyData) {
+			System.out.println("hi");
 			GenLobbyData data = (GenLobbyData)arg0;
-			//gc.setLobbyCode(data.getCode());
+			wrc.setLobbyCode(Integer.toString(data.getCode()));
 			dc.setWord(data.getCat());
+			glc.success();
 		}
 	}
 }

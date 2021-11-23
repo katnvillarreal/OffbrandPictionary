@@ -58,7 +58,7 @@ public class GenLobbyPanel extends JPanel{
 		buttonGroup.add(rdbtnAnimals);
 		rdbtnAnimals.setBackground(new Color(143, 188, 143));
 		rdbtnAnimals.setBounds(85, 75, 141, 29);
-		rdbtnAnimals.setActionCommand("animals");
+		rdbtnAnimals.setActionCommand("animal");
 		panel.add(rdbtnAnimals);
 		
 		JRadioButton rdbtnPlaces = new JRadioButton("Places");
@@ -66,7 +66,7 @@ public class GenLobbyPanel extends JPanel{
 		buttonGroup.add(rdbtnPlaces);
 		rdbtnPlaces.setBackground(new Color(143, 188, 143));
 		rdbtnPlaces.setBounds(85, 108, 117, 29);
-		rdbtnPlaces.setActionCommand("places");
+		rdbtnPlaces.setActionCommand("place");
 		panel.add(rdbtnPlaces);
 		
 		JRadioButton rdbtnSports = new JRadioButton("Sports");
@@ -74,7 +74,7 @@ public class GenLobbyPanel extends JPanel{
 		buttonGroup.add(rdbtnSports);
 		rdbtnSports.setBackground(new Color(143, 188, 143));
 		rdbtnSports.setBounds(85, 140, 117, 33);
-		rdbtnSports.setActionCommand("sports");
+		rdbtnSports.setActionCommand("sport");
 		panel.add(rdbtnSports);
 		
 		JLabel lblNewLabel = new JLabel("New label");

@@ -37,10 +37,6 @@ public class GenLobbyControl implements ActionListener{
 				displayError("You must choose a category type.");
 		        return;
 			}
-			else {
-				CardLayout cardLayout = (CardLayout)container.getLayout();
-			    cardLayout.show(container, "6");
-			}
 			
 			try { client.sendToServer(data); }
 		    catch (IOException e) { displayError("Error connecting to the server."); }
@@ -52,14 +48,13 @@ public class GenLobbyControl implements ActionListener{
 	    return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
 	}
 	
-	public void success(boolean b) {
+	public void success() {
 		CardLayout cardLayout = (CardLayout)container.getLayout();
-		cardLayout.show(container,  "4");
-
+		cardLayout.show(container,  "6");
 	}
 	
 	public void displayError(String error) {
-		GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(1);
+		GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(3);
 		lobbyPanel.setError(error);
 	}
 }
