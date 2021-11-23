@@ -9,12 +9,17 @@ import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
 public class Server extends AbstractServer {
+	private Database database;
 	
 	public Server() {
 		super(12345);
 		this.setTimeout(500);
 	}
 
+	public void setDatabase(Database database) {
+		  this.database = database;
+	}
+	
 	public void serverStarted() {
 		System.out.println("Server Started");
 	}
@@ -29,6 +34,11 @@ public class Server extends AbstractServer {
 			
 			try {arg1.sendToClient(img); }
 			catch (IOException e) { e.printStackTrace(); }
+		}
+		else if (arg0 instanceof CreateAccountData) {
+			CreateAccountData data = (CreateAccountData)arg0;
+			
+			
 		}
 		else if (arg0 instanceof GenLobbyData) {
 			GenLobbyData data = (GenLobbyData)arg0;

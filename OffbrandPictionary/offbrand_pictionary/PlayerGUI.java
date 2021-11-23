@@ -24,8 +24,8 @@ public class PlayerGUI extends JFrame {
 		LoginControl lc = new LoginControl(container, client);
 		CreateAccountControl cac = new CreateAccountControl(container, client);
 	    GenLobbyControl glc = new GenLobbyControl(container, client);
-	    JoinLobbyControl jlc = new JoinLobbyControl(container);
-	    WaitingRoomControl wrc = new WaitingRoomControl(container);
+	    JoinLobbyControl jlc = new JoinLobbyControl(container, client);
+	    WaitingRoomControl wrc = new WaitingRoomControl(container, client);
 	    DrawerControl dc = new DrawerControl(container, client);
 	    GuessControl gc = new GuessControl(container, client);
 		
