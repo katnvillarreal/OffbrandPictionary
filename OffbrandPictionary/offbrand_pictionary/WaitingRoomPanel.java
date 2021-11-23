@@ -53,6 +53,7 @@ public class WaitingRoomPanel extends JPanel{
 		panel.add(separator_1);
 		
 		lblCode = new JLabel("");
+		lblCode.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblCode.setBounds(25, 70, 184, 50);
 		panel.add(lblCode);

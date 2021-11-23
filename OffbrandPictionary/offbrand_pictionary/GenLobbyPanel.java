@@ -57,7 +57,7 @@ public class GenLobbyPanel extends JPanel{
 		rdbtnAnimals.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonGroup.add(rdbtnAnimals);
 		rdbtnAnimals.setBackground(new Color(143, 188, 143));
-		rdbtnAnimals.setBounds(85, 75, 141, 29);
+		rdbtnAnimals.setBounds(85, 97, 141, 29);
 		rdbtnAnimals.setActionCommand("animal");
 		panel.add(rdbtnAnimals);
 		
@@ -65,7 +65,7 @@ public class GenLobbyPanel extends JPanel{
 		rdbtnPlaces.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonGroup.add(rdbtnPlaces);
 		rdbtnPlaces.setBackground(new Color(143, 188, 143));
-		rdbtnPlaces.setBounds(85, 108, 117, 29);
+		rdbtnPlaces.setBounds(85, 130, 117, 29);
 		rdbtnPlaces.setActionCommand("place");
 		panel.add(rdbtnPlaces);
 		
@@ -73,7 +73,7 @@ public class GenLobbyPanel extends JPanel{
 		rdbtnSports.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		buttonGroup.add(rdbtnSports);
 		rdbtnSports.setBackground(new Color(143, 188, 143));
-		rdbtnSports.setBounds(85, 140, 117, 33);
+		rdbtnSports.setBounds(85, 162, 117, 33);
 		rdbtnSports.setActionCommand("sport");
 		panel.add(rdbtnSports);
 		
@@ -84,7 +84,7 @@ public class GenLobbyPanel extends JPanel{
 		
 		lblError = new JLabel("");
 		lblError.setForeground(new Color(255, 0, 0));
-		lblError.setBounds(10, 21, 179, 13);
+		lblError.setBounds(53, 68, 200, 13);
 		panel.add(lblError);
 		
 		JButton btnCancel = new JButton("Cancel");

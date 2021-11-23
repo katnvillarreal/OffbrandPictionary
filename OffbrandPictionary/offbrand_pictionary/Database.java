@@ -79,6 +79,7 @@ public class Database {
 	public String getWord(String choice) {
 		String cmd = "select * from words where category='" + choice + "' order by RAND() LIMIT 1;";
 		ArrayList<String> result = this.query(cmd);
-		return result.get(0);
+		String[] word = result.get(0).split(",");
+		return word[0];
 	}
 }
