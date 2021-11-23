@@ -40,31 +40,33 @@ public class LoginPanel extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(143, 188, 143));
-		panel.setBounds(10, 10, 430, 280);
+		panel.setBounds(10, 10, 613, 382);
 		add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblLogIn = new JLabel("");
 		lblLogIn.setIcon(new ImageIcon(LoginPanel.class.getResource("/offbrand_pictionary/Login.png")));
 		lblLogIn.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblLogIn.setBounds(24, 52, 164, 41);
+		lblLogIn.setBounds(193, 34, 164, 41);
 		panel.add(lblLogIn);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(36, 128, 63, 13);
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblUsername.setBounds(145, 105, 106, 31);
 		panel.add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(36, 151, 55, 13);
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblPassword.setBounds(145, 148, 106, 31);
 		panel.add(lblPassword);
 		
 		textField_Username = new JTextField();
-		textField_Username.setBounds(87, 125, 96, 19);
+		textField_Username.setBounds(261, 108, 133, 31);
 		panel.add(textField_Username);
 		textField_Username.setColumns(10);
 		
 		textField_Password = new JTextField();
-		textField_Password.setBounds(87, 148, 96, 19);
+		textField_Password.setBounds(261, 151, 133, 31);
 		panel.add(textField_Password);
 		textField_Password.setColumns(10);
 		
@@ -75,16 +77,16 @@ public class LoginPanel extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(LoginPanel.class.getResource("/offbrand_pictionary/Stick_man_sideway.png")));
-		lblNewLabel.setBounds(221, 10, 168, 317);
+		lblNewLabel.setBounds(435, 65, 168, 317);
 		panel.add(lblNewLabel);
 		
 		JButton btnLogin = new JButton("Login");
-		btnLogin.setBounds(56, 174, 85, 21);
+		btnLogin.setBounds(193, 288, 164, 31);
 		btnLogin.addActionListener(lc);
 		panel.add(btnLogin);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(56, 205, 85, 21);
+		btnCancel.setBounds(193, 330, 164, 21);
 		btnCancel.addActionListener(lc);
 		panel.add(btnCancel);
 	}

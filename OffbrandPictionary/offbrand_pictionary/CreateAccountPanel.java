@@ -44,39 +44,42 @@ public class CreateAccountPanel extends JPanel{
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(143, 188, 143));
-		panel.setBounds(10, 10, 430, 280);
+		panel.setBounds(10, 11, 613, 382);
 		add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblCreateAccount = new JLabel("Create Account");
-		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCreateAccount.setBounds(24, 34, 144, 25);
+		JLabel lblCreateAccount = new JLabel("Create A New Account");
+		lblCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblCreateAccount.setBounds(139, 36, 289, 75);
 		panel.add(lblCreateAccount);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(63, 88, 62, 13);
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblUsername.setBounds(162, 122, 102, 32);
 		panel.add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(63, 111, 62, 13);
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPassword.setBounds(162, 158, 102, 32);
 		panel.add(lblPassword);
 		
 		JLabel lblReenterPassword = new JLabel("Re-enter Password:");
-		lblReenterPassword.setBounds(24, 134, 94, 13);
+		lblReenterPassword.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblReenterPassword.setBounds(98, 195, 148, 32);
 		panel.add(lblReenterPassword);
 		
 		textField_Username = new JTextField();
-		textField_Username.setBounds(118, 85, 96, 19);
+		textField_Username.setBounds(252, 122, 128, 27);
 		panel.add(textField_Username);
 		textField_Username.setColumns(10);
 		
 		textField_Password = new JTextField();
-		textField_Password.setBounds(118, 108, 96, 19);
+		textField_Password.setBounds(252, 160, 128, 27);
 		panel.add(textField_Password);
 		textField_Password.setColumns(10);
 		
 		textField_ReenterPassword = new JTextField();
-		textField_ReenterPassword.setBounds(118, 131, 96, 19);
+		textField_ReenterPassword.setBounds(252, 198, 128, 27);
 		panel.add(textField_ReenterPassword);
 		textField_ReenterPassword.setColumns(10);
 		
@@ -87,20 +90,21 @@ public class CreateAccountPanel extends JPanel{
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(CreateAccountPanel.class.getResource("/offbrand_pictionary/Stick_man_impatient.png")));
-		lblNewLabel.setBounds(197, 75, 176, 313);
+		lblNewLabel.setBounds(389, 69, 176, 313);
 		panel.add(lblNewLabel);
 		
 		JLabel lblHurryUp = new JLabel("Hurry Up!");
-		lblHurryUp.setBounds(291, 54, 45, 13);
+		lblHurryUp.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblHurryUp.setBounds(470, 26, 102, 44);
 		panel.add(lblHurryUp);
 		
 		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(81, 157, 85, 21);
+		btnSubmit.setBounds(186, 260, 194, 32);
 		btnSubmit.addActionListener(cap);
 		panel.add(btnSubmit);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(81, 188, 85, 21);
+		btnCancel.setBounds(186, 303, 194, 21);
 		panel.add(btnCancel);
 	}
 

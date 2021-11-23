@@ -34,46 +34,48 @@ public class JoinLobbyPanel extends JPanel{
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(143, 188, 143));
-		panel.setBounds(10, 10, 430, 280);
+		panel.setBounds(10, 11, 613, 382);
 		add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblJoinLobby = new JLabel("");
 		lblJoinLobby.setIcon(new ImageIcon(JoinLobbyPanel.class.getResource("/offbrand_pictionary/joinlobby.png")));
 		lblJoinLobby.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblJoinLobby.setBounds(10, 21, 280, 51);
+		lblJoinLobby.setBounds(10, 21, 328, 51);
 		panel.add(lblJoinLobby);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(21, 90, 115, 2);
+		separator.setBounds(20, 83, 267, 2);
 		panel.add(separator);
 		
 		JLabel lblNickname = new JLabel("Nickname:");
-		lblNickname.setBounds(21, 102, 56, 13);
+		lblNickname.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNickname.setBounds(21, 100, 96, 21);
 		panel.add(lblNickname);
 		
 		JLabel lblLobbyCode = new JLabel("Lobby Code:");
-		lblLobbyCode.setBounds(10, 128, 67, 13);
+		lblLobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblLobbyCode.setBounds(20, 119, 107, 31);
 		panel.add(lblLobbyCode);
 		
 		textField_Nickname = new JTextField();
-		textField_Nickname.setBounds(72, 102, 96, 19);
+		textField_Nickname.setBounds(127, 102, 122, 21);
 		panel.add(textField_Nickname);
 		textField_Nickname.setColumns(10);
 		
 		textField_LobbyCode = new JTextField();
-		textField_LobbyCode.setBounds(72, 125, 96, 19);
+		textField_LobbyCode.setBounds(127, 126, 122, 21);
 		panel.add(textField_LobbyCode);
 		textField_LobbyCode.setColumns(10);
 		
 		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(51, 154, 85, 21);
+		btnSubmit.setBounds(55, 209, 161, 38);
 		btnSubmit.addActionListener(jlc);
 		panel.add(btnSubmit);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(JoinLobbyPanel.class.getResource("/offbrand_pictionary/happy_stickman.png")));
-		lblNewLabel.setBounds(124, 66, 415, 401);
+		lblNewLabel.setBounds(285, 55, 354, 401);
 		panel.add(lblNewLabel);
 		
 		lblError = new JLabel("");
@@ -86,7 +88,7 @@ public class JoinLobbyPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCanel.setBounds(51, 186, 89, 21);
+		btnCanel.setBounds(55, 258, 161, 21);
 		panel.add(btnCanel);
 	}
 }

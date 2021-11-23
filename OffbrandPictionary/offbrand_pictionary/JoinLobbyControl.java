@@ -37,7 +37,8 @@ public class JoinLobbyControl implements ActionListener{
 	    		displayError("You must enter a nickname and lobby code.");
 	    		return;
 	    	}
-	    	try { client.sendToServer(lobbyCode); }
+	    	JoinLobbyData joinLobbyData  = new JoinLobbyData(nickname, lobbyCode);
+	    	try { client.sendToServer(joinLobbyData); }
 		    catch (IOException e) { displayError("Lobby does not exist."); }
 	    }
 	}
