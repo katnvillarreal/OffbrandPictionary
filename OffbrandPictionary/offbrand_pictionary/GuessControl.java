@@ -29,25 +29,27 @@ public class GuessControl implements ActionListener{
 			GuesserPanel guessPanel = (GuesserPanel)container.getComponent(7);
 		    GuesserData data = new GuesserData(guessPanel.getWord(), guessPanel.getDrawer());
 			
+		    // if empty don't send anything to the server
 			if (data.getWord().equals("")) { return; }
+			// if there is words, empty out the textbox
 			else { guessPanel.setWord(""); }
 			
 			try { client.sendToServer(data); }
-		    catch (IOException e) { System.out.println("ERROR sending word to the server."); }
+		    catch (IOException e) { guessPanel.setError("Error sending guess to server"); }
 		}
-		
 	}
 	
-	public void setImage(BufferedImage img) {
-		this.img = img;
-	}
+	// Set the image gotten from the server to the image on the guesser panel
+	public void setImage(BufferedImage img) { this.img = img; }
 	
+	// When the correct word is guessed alert the player and make the textbox uneditable
 	public void correctWord() {
 		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
 		guesserPanel.setError("YOU GUESSED CORRECTLY");
 		guesserPanel.correctGuess();
 	}
 	
+	// Display an error on the panel when incorrectly guessed
 	public void displayError(String error) {
 		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
 		guesserPanel.setError(error);

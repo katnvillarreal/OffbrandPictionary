@@ -13,30 +13,21 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class LoginPanel extends JPanel {
+	// Private Data Members
 	private JTextField textField_Username;
 	private JPasswordField password;
 	private JLabel lblError;
 	
-	public String getUsername() {
-	    return textField_Username.getText();
-	}
+	// Getters
+	public String getUsername() { return textField_Username.getText(); }
+	public String getPassword() { return new String(password.getPassword()); }
 
-	public String getPassword() {
-		return new String(password.getPassword());
-	}
-
-	public void setUsername(String user) {
-		textField_Username.setText(user);
-	}
-
-	public void setPassword(String pass) {
-		password.setText(pass);
-	}
+	// Setters
+	public void setUsername(String user) { textField_Username.setText(user); }
+	public void setPassword(String pass) { password.setText(pass); }
+	public void setError(String error) { lblError.setText(error); }
 	
-	public void setError(String error) {
-		lblError.setText(error);
-	}
-	
+	// Constructor
 	public LoginPanel(LoginControl lc) {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);

@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 public class WelcomePanel extends JPanel {
+	// Constructor
 	public WelcomePanel(WelcomeControl wc) {
 		setBackground(Color.BLACK);
 		setLayout(null);
