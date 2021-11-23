@@ -35,8 +35,11 @@ public class LoginControl implements ActionListener{
 		}
 	}
 	
-	public void LoginSuccess() {
-		
+	public void loginSuccess() {
+		GenLobbyPanel genLobbyPanel = (GenLobbyPanel)container.getComponent(4);
+		genLobbyPanel.setError("");
+		CardLayout cardLayout = (CardLayout)container.getLayout();
+		cardLayout.show(container, "4");
 	}
 	
 	public void displayError(String error) {

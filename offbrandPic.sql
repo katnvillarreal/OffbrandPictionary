@@ -1,6 +1,6 @@
 DROP TABLE players;
 DROP TABLE words;
-DROP TABLE catergories;
+DROP TABLE categories;
 
 CREATE TABLE players (
     username            VARCHAR(25),
@@ -9,11 +9,11 @@ CREATE TABLE players (
 
 CREATE TABLE words (
     word                VARCHAR(128),
-    catergory           VARCHAR(25)
+    category           VARCHAR(25)
 );
 
-CREATE TABLE catergories (
-    catergory           VARCHAR(25)
+CREATE TABLE categories (
+    category           VARCHAR(25)
 );
 
 ALTER TABLE players
@@ -22,23 +22,23 @@ ALTER TABLE players
 ALTER TABLE words
     ADD CONSTRAINT word_pk PRIMARY KEY(word);
 
-ALTER TABLE catergories
-    ADD CONSTRAINT catergory_pk PRIMARY KEY(catergory);
+ALTER TABLE categories
+    ADD CONSTRAINT category_pk PRIMARY KEY(category);
 
 ALTER TABLE words
-    ADD CONSTRAINT catergory_fk FOREIGN KEY(catergory)
-    REFERENCES catergories(catergory);
+    ADD CONSTRAINT category_fk FOREIGN KEY(category)
+    REFERENCES categories(category);
 
 -- Player information
 INSERT INTO players VALUES ("kvillarreal",aes_encrypt('veryG00dPass','key'));
 INSERT INTO players VALUES ("makenzie",aes_encrypt('randomPassword','key'));
 
--- Catergories
-INSERT INTO catergories VALUES ("animal");
-INSERT INTO catergories VALUES ("place");
-INSERT INTO catergories VALUES ("sport");
+-- categories
+INSERT INTO categories VALUES ("animal");
+INSERT INTO categories VALUES ("place");
+INSERT INTO categories VALUES ("sport");
 
--- Animal Catergory
+-- Animal category
 INSERT INTO words VALUES ("cat", "animal");
 INSERT INTO words VALUES ("dog", "animal");
 INSERT INTO words VALUES ("rat", "animal");
@@ -79,7 +79,7 @@ INSERT INTO words VALUES ("pig", "animal");
 INSERT INTO words VALUES ("cow", "animal");
 INSERT INTO words VALUES ("longhorn", "animal");
 
--- Places Catergory
+-- Places category
 INSERT INTO words VALUES ("Statute of Liberty", "place");
 INSERT INTO words VALUES ("Eiffel Tower", "place");
 INSERT INTO words VALUES ("Big Ben", "place");
@@ -97,7 +97,7 @@ INSERT INTO words VALUES ("Easter Island", "place");
 INSERT INTO words VALUES ("Disney World", "place");
 INSERT INTO words VALUES ("The Parthenon", "place");
 
--- Sports Catergory
+-- Sports category
 INSERT INTO words VALUES ("Basketball", "sport");
 INSERT INTO words VALUES ("Gynmastics", "sport");
 INSERT INTO words VALUES ("Skiing", "sport");

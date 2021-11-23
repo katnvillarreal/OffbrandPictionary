@@ -26,7 +26,7 @@ public class DrawerControl implements ActionListener{
 	}
 	
 	public void setWord(String word) {
-		DrawerPanel drawPanel = (DrawerPanel)container.getComponent(1);
+		DrawerPanel drawPanel = (DrawerPanel)container.getComponent(7);
 		drawPanel.setWord(word);
 	}
 }

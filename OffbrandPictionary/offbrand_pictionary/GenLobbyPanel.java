@@ -11,15 +11,10 @@ import javax.swing.ImageIcon;
 
 public class GenLobbyPanel extends JPanel{
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private JLabel lblError;
 	
 	public ButtonGroup getGroup() {
 		return buttonGroup;
-	}
-	
-	public ButtonGroup getGroup1() {
-		return buttonGroup_1;
 	}
 	
 	public void setError(String error) {
@@ -69,20 +64,6 @@ public class GenLobbyPanel extends JPanel{
 		JLabel lblType = new JLabel("Type");
 		lblType.setBounds(51, 167, 45, 13);
 		panel.add(lblType);
-		
-		JRadioButton rdbtnPoints = new JRadioButton("Points");
-		buttonGroup_1.add(rdbtnPoints);
-		rdbtnPoints.setBackground(new Color(143, 188, 143));
-		rdbtnPoints.setBounds(51, 186, 103, 21);
-		rdbtnPoints.setActionCommand("points");
-		panel.add(rdbtnPoints);
-		
-		JRadioButton rdbtnRounds = new JRadioButton("Rounds");
-		buttonGroup_1.add(rdbtnRounds);
-		rdbtnRounds.setBackground(new Color(143, 188, 143));
-		rdbtnRounds.setBounds(51, 209, 103, 21);
-		rdbtnRounds.setActionCommand("rounds");
-		panel.add(rdbtnRounds);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(GenLobbyPanel.class.getResource("/offbrand_pictionary/pirate_stickman.png")));

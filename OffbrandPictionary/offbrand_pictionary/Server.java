@@ -10,6 +10,9 @@ import ocsf.server.ConnectionToClient;
 
 public class Server extends AbstractServer {
 	private Database database;
+	private String lobbycode;
+	private String catChoice;
+	private String typeChoice;
 	
 	public Server() {
 		super(12345);
@@ -18,6 +21,10 @@ public class Server extends AbstractServer {
 
 	public void setDatabase(Database database) {
 		  this.database = database;
+	}
+	
+	public void setCatChoice() {
+		
 	}
 	
 	public void serverStarted() {
@@ -38,22 +45,30 @@ public class Server extends AbstractServer {
 		else if (arg0 instanceof CreateAccountData) {
 			CreateAccountData data = (CreateAccountData)arg0;
 			
+			Object result;
+			if (database.createNewAccount(data.getUsername(), data.getPassword())) {
+				result = "CreateAccountSuccessful";
+			}
+			else { result = "ErrorUsername"; }
+			
+			try { arg1.sendToClient(result); }
+			catch (IOException e) { return; }
+		}
+		else if (arg0 instanceof LoginData) {
 			
 		}
 		else if (arg0 instanceof GenLobbyData) {
 			GenLobbyData data = (GenLobbyData)arg0;
 			
-			String catChoice = data.getCat();
-			String typeChoice = data.getType();
+			catChoice = data.getCat();
+			int lobbyCode = data.getCode();
+			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbyCode);
 			
-			// server needs to query database for categories
-			// servers gets string array form database
-			// server randomly generates a random number and uses it to pick a word form the string array
-			// sends the word back to the client
-			
-			String word = "choice";
-			
-			try { arg1.sendToClient(word); }
+			try { arg1.sendToClient(result); }
+			catch (IOException e) { return; }
+		}
+		else if (arg0 instanceof JoinLobbyData) {
+			try { arg1.sendToClient(arg0); }
 			catch (IOException e) { return; }
 		}
 	}

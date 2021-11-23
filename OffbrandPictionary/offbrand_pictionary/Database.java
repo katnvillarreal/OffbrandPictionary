@@ -51,7 +51,7 @@ public class Database {
 	
 	// Method for verifying a username and password.
 	public boolean verifyAccount(String username, String password) {
-		String cmd = "select * from user where username='"+username+"' and password='"+password+"';";
+		String cmd = "select * from players where username='"+username+"' and password='"+password+"';";
 		ArrayList<String> result = this.query(cmd);
 	    
 		if (!result.isEmpty())
@@ -62,16 +62,22 @@ public class Database {
 	  
 	  // Method for creating a new account.
 	public boolean createNewAccount(String username, String password) {
-		String cmd = "select * from user where username='"+username+"' and password='"+password+"';";
+		String cmd = "select * from players where username='"+username+"' and password='"+password+"';";
 		ArrayList<String> result = this.query(cmd);
 	    
 		if (result.isEmpty())  {
 			try {
-				this.executeDML("insert into user values('"+username+"','"+password+"');");
+				this.executeDML("insert into players values('"+username+"','"+password+"');");
 				return true;
 			} catch (SQLException e) { e.printStackTrace(); }
 			return false;
 		}
 		else { return false; }
+	}
+	
+	public String getWord(String choice) {
+		String cmd = "select * from words order by = RAND() where category='"+choice+"';";
+		ArrayList<String> result = this.query(cmd);
+		return result.get(0);
 	}
 }

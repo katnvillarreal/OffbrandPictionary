@@ -3,25 +3,26 @@ package offbrand_pictionary;
 public class GenLobbyData {
 	private String catChoice;
 	private String typeChoice;
+	private int lobbyCode;
 	
 	public String getCat() {
 	    return catChoice;
 	}
 	
-	public String getType() {
-	    return typeChoice;
+	public int getCode() {
+	    return lobbyCode;
 	}
 
 	public void setCat(String catChoice) {
 	    this.catChoice = catChoice;
 	}
 	
-	public void setType(String typeChoice) {
-	    this.typeChoice = typeChoice;
+	public void setCode(int lobbyCode) {
+	    this.lobbyCode = lobbyCode;
 	}
 
-	public GenLobbyData(String catChoice, String typeChoice) {
+	public GenLobbyData(String catChoice, int lobbyCode) {
 		setCat(catChoice);
-		setType(typeChoice);
+		setCode(lobbyCode);
 	}
 }

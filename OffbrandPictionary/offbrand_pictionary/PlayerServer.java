@@ -5,11 +5,8 @@ import java.io.IOException;
 public class PlayerServer {
 	private Server server;
 	
-	public PlayerServer(int port, int timeout ) {
+	public PlayerServer() {
 		server = new Server();
-		
-		server.setPort(port);
-		server.setTimeout(timeout);
 		Database db = new Database();
 		server.setDatabase(db);
 
@@ -18,6 +15,6 @@ public class PlayerServer {
 	}
 	
 	public static void main(String[] args) {
-		new PlayerServer(8300, 500);
+		new PlayerServer();
 	}
 }
