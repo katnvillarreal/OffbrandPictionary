@@ -65,13 +65,16 @@ public class Client extends AbstractClient {
 			else if (msg == "ErrorUsername") {
 				cac.displayError("The username is already in use.");
 			}
+			else if (msg == "JoinSuccess") {
+				jlc.JoinLobbySuccess();
+			}
+			else if (msg == "JoinError") {
+				jlc.displayError("Lobby Entered does not exist");
+			}
 		}
 		else if (arg0 instanceof BufferedImage) {
 			BufferedImage img = (BufferedImage)arg0;
 			gc.setImage(img);
-		}
-		else if (arg0 instanceof JoinLobbyData) {
-			JoinLobbyData data = (JoinLobbyData)arg0;
 		}
 		else if (arg0 instanceof GenLobbyData) {
 			GenLobbyData data = (GenLobbyData)arg0;
