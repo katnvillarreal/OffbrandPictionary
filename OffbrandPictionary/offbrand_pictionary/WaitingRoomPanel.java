@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -24,8 +26,10 @@ public class WaitingRoomPanel extends JPanel{
 		lblCode.setText(lobbyCode);;
 	}
 	
-	public void addReadyPlayer(String str) {
-		playerNames.append(str + "\n");
+	public void setPlayerList(ArrayList<String> pNames) {
+		for (String name : pNames) {
+			playerNames.append(name + "\n");
+		}
 	}
 	
 	public WaitingRoomPanel(WaitingRoomControl wrc) {

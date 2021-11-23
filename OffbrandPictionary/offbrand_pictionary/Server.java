@@ -4,6 +4,8 @@ package offbrand_pictionary;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
@@ -13,16 +15,21 @@ public class Server extends AbstractServer {
 	private int lobbycode;
 	private String catChoice;
 	private String currentWord;
+	private int numPlayers;
+	private int currentPlayers;
+	private ArrayList<String> playerNames;
 	
 	// Class Constructor
 	public Server() {
 		super(8300);
 		this.setTimeout(500);
+		currentPlayers = 0;
+		playerNames = new ArrayList<String>();
 	}
 
 	// Setters
 	public void setDatabase(Database database) {
-		  this.database = database;
+		this.database = database;
 	}
 	public void setCatChoice(String catChoice) {
 		this.catChoice = catChoice;
@@ -55,6 +62,16 @@ public class Server extends AbstractServer {
 			try {arg1.sendToClient(img); }
 			catch (IOException e) { e.printStackTrace(); }
 		}
+		else if (arg0 instanceof String) {
+			String msg = (String)arg0;
+			if (msg.equals("addPlayer")) {
+				currentPlayers++;
+				sendToAllClients(playerNames);
+				if (currentPlayers == numPlayers) {
+					sendToAllClients("Start Game");
+				}
+			}
+		}
 		// When getting a CreateAccountData object
 		else if (arg0 instanceof CreateAccountData) {
 			System.out.println("CreateAccountData received");
@@ -76,6 +93,7 @@ public class Server extends AbstractServer {
 			Object result;
 			if(database.verifyAccount(data.getUsername(), data.getPassword())) {
 				result = "LoginSuccessful";
+				playerNames.add(data.getUsername());
 			}
 			else { result = "LoginError"; }
 			
@@ -89,7 +107,8 @@ public class Server extends AbstractServer {
 			
 			catChoice = data.getCat();
 			lobbycode = data.getCode();
-			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbycode);
+			numPlayers = data.getPlayers();
+			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbycode, numPlayers);
 			
 			try { arg1.sendToClient(result); }
 			catch (IOException e) { return; }
@@ -98,11 +117,14 @@ public class Server extends AbstractServer {
 		else if (arg0 instanceof JoinLobbyData) {
 			System.out.println("JoinLobbyData received");
 			JoinLobbyData data = (JoinLobbyData)arg0;
-			Object result;
+			
+			JoinLobbyData result;
 			if(data.getLobbyCode()== lobbycode) {
-				result = "JoinSuccess";
+				result = new JoinLobbyData(data.getNickname(), data.getLobbyCode(), "JoinSuccess");
+				playerNames.add(data.getNickname());
 			}
-			else { result = "JoinError"; }
+			else { result = new JoinLobbyData(data.getNickname(), data.getLobbyCode(), "JoinError"); }
+			
 			try { arg1.sendToClient(result); }
 			catch (IOException e) { return; }
 		}

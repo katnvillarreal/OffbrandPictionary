@@ -1,6 +1,7 @@
 package offbrand_pictionary;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import ocsf.client.AbstractClient;
 
@@ -65,12 +66,6 @@ public class Client extends AbstractClient {
 			else if (msg.equals("ErrorUsername")) {
 				cac.displayError("The username is already in use.");
 			}
-			else if (msg.equals("JoinSuccess")) {
-				jlc.JoinLobbySuccess();
-			}
-			else if (msg.equals("JoinError")) {
-				jlc.displayError("Lobby Entered does not exist");
-			}
 			else if (msg.equals("CorrectWord")) {
 				gc.correctWord();
 			}
@@ -87,6 +82,20 @@ public class Client extends AbstractClient {
 			wrc.setLobbyCode(Integer.toString(data.getCode()));
 			dc.setWord(data.getCat());
 			glc.success();
+		}
+		else if (arg0 instanceof JoinLobbyData) {
+			JoinLobbyData data = (JoinLobbyData)arg0;
+			
+			if (data.getMsg().equals("JoinSuccess")) {
+				wrc.setLobbyCode(Integer.toString(data.getLobbyCode()));
+				jlc.JoinLobbySuccess();
+			}
+			else if (data.getMsg().equals("JoinError")) {
+				jlc.displayError("Lobby Entered does not exist");
+			}
+		}
+		else if (arg0 instanceof ArrayList) {
+			wrc.setUserArea((ArrayList<String>)arg0);
 		}
 	}
 }
