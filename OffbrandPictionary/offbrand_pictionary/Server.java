@@ -15,7 +15,7 @@ public class Server extends AbstractServer {
 	private String typeChoice;
 	
 	public Server() {
-		super(12345);
+		super(8300);
 		this.setTimeout(500);
 	}
 

@@ -21,7 +21,7 @@ public class LoginControl implements ActionListener{
 			CardLayout cardLayout = (CardLayout)container.getLayout();
 		    cardLayout.show(container, "1");
 		}
-		else if (command == "Submit") {
+		else if (command == "Login") {
 			LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
 		    LoginData data = new LoginData(loginPanel.getUsername(), loginPanel.getPassword());
 		    

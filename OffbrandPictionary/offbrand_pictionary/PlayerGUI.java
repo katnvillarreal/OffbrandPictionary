@@ -19,6 +19,7 @@ public class PlayerGUI extends JFrame {
 		
 		CardLayout cardLayout = new CardLayout();
 		JPanel container = new JPanel(cardLayout);
+		PaintPanel canvas = new PaintPanel(418, 288);
 		
 		WelcomeControl wc = new WelcomeControl(container);
 		LoginControl lc = new LoginControl(container, client);
@@ -26,7 +27,7 @@ public class PlayerGUI extends JFrame {
 	    GenLobbyControl glc = new GenLobbyControl(container, client);
 	    JoinLobbyControl jlc = new JoinLobbyControl(container, client);
 	    WaitingRoomControl wrc = new WaitingRoomControl(container, client);
-	    DrawerControl dc = new DrawerControl(container, client);
+	    DrawerControl dc = new DrawerControl(container, client, canvas);
 	    GuessControl gc = new GuessControl(container, client);
 		
 		client.setLoginControl(lc);
@@ -43,7 +44,7 @@ public class PlayerGUI extends JFrame {
 	    JPanel view4 = new GenLobbyPanel(glc);   
 	    JPanel view5 = new JoinLobbyPanel(jlc);
 	    JPanel view6 = new WaitingRoomPanel(wrc);
-	    JPanel view7 = new DrawerPanel(dc);
+	    JPanel view7 = new DrawerPanel(dc, canvas);
 	    JPanel view8 = new GuesserPanel(gc);
 
 		container.add(view1, "1");

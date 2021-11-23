@@ -14,15 +14,13 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
     private Color color = Color.BLACK;;
     private Point end = null;
 	private int n = 5;
-	private DrawerControl dc;
 	
     private BufferedImage bufImage = null;
     
-    public PaintPanel(int w, int h, DrawerControl dc) {
+    public PaintPanel(int w, int h) {
         setPreferredSize(new Dimension(w, h));
         setBackground(Color.white);
         
-        this.dc = dc;
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
@@ -66,7 +64,6 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
 		g2.drawLine(e.getX(), e.getY(), e.getX(), e.getY());
 		
 		repaint();
-		dc.actionPerformed(new ActionEvent(bufImage, 50, "image"));
     }
     
     public void mouseMoved  (MouseEvent e) {}

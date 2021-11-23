@@ -68,7 +68,7 @@ public class LoginPanel extends JPanel {
 		panel.add(textField_Password);
 		textField_Password.setColumns(10);
 		
-		JLabel lblError = new JLabel("");
+		lblError = new JLabel("");
 		lblError.setForeground(new Color(255, 0, 0));
 		lblError.setBounds(36, 105, 45, 13);
 		panel.add(lblError);

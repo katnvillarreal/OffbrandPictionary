@@ -82,10 +82,7 @@ public class JoinLobbyPanel extends JPanel{
 		panel.add(lblError);
 		
 		JButton btnCanel = new JButton("Cancel");
-		btnCanel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnCanel.addActionListener(jlc);
 		btnCanel.setBounds(51, 186, 89, 21);
 		panel.add(btnCanel);
 	}
