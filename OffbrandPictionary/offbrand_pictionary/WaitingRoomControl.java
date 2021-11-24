@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -24,14 +25,10 @@ public class WaitingRoomControl implements ActionListener{
 	    
 	    // If Ready Up is pressed
 	    if (command == "Ready Up") {
-	    	WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
-	    	String lobbyCode = waitingRoomPanel.getLobbyCode();
-	    	WaitingRoomData waitingRoomData  = new WaitingRoomData(lobbyCode);
-	    	try { client.sendToServer(waitingRoomData); }
+	    	try { client.sendToServer("addPlayer"); }
 		    catch (IOException e) { System.out.println("Error sending data to server."); }
-			
 	    }
-	    // If cancel button is pressed go back to JoinLobbyPanel
+	    // If cancel button is pressed go back to welcome
 	    else if(command == "Cancel") {
 	    	CardLayout cardLayout = (CardLayout)container.getLayout();
 	    	cardLayout.show(container, "1");
@@ -41,5 +38,10 @@ public class WaitingRoomControl implements ActionListener{
 	public void setLobbyCode(String lobbyCode) {
 		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
 		waitingRoomPanel.setLobbyCode(lobbyCode);
+	}
+	
+	public void setUserArea(ArrayList<String> playerNames) {
+		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
+		waitingRoomPanel.setPlayerList(playerNames);
 	}
 }
