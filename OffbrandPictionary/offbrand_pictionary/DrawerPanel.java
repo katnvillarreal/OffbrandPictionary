@@ -40,6 +40,7 @@ public class DrawerPanel extends JPanel{
 		panel.add(panel_1);
 		
 		JButton btnSizeUp = new JButton("Size ++");
+		btnSizeUp.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnSizeUp.setBounds(20, 325, 67, 21);
 		btnSizeUp.addActionListener(dc);
 		panel.add(btnSizeUp);
@@ -60,6 +61,7 @@ public class DrawerPanel extends JPanel{
 		panel.add(btnRed);
 		
 		JButton btnGreen = new JButton("Green");
+		btnGreen.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnGreen.setBounds(307, 325, 60, 21);
 		btnGreen.addActionListener(dc);
 		panel.add(btnGreen);
