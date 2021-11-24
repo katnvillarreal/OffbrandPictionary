@@ -27,6 +27,8 @@ public class JoinLobbyControl implements ActionListener{
 	    	joinLobbyPanel.setLobbyCode("");
 	    	CardLayout cardLayout = (CardLayout)container.getLayout();
 	    	cardLayout.show(container, "1");
+	    	try { client.sendToServer("Cancel"); } 
+	    	catch (IOException e) { displayError("Error connecting to the server."); }
 	    }
 
 	    // If the submit button is clicked check if it works

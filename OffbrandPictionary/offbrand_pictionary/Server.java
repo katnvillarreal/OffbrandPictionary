@@ -67,6 +67,10 @@ public class Server extends AbstractServer {
 					sendToAllClients("Start Game");
 				}
 			}
+			else if (msg.equals("Cancel")) {
+				currentPlayers--;
+				playerNames.remove(arg1.getName());
+			}
 		}
 		// When getting a CreateAccountData object
 		else if (arg0 instanceof CreateAccountData) {
@@ -77,7 +81,7 @@ public class Server extends AbstractServer {
 			if (database.createNewAccount(data.getUsername(), data.getPassword())) {
 				result = "CreateAccountSuccessful";
 				playerNames.add(data.getUsername());
-				sendToAllClients(playerNames);
+				arg1.setName(data.getUsername());
 			}
 			else { result = "ErrorUsername"; }
 			
@@ -92,6 +96,7 @@ public class Server extends AbstractServer {
 			if(database.verifyAccount(data.getUsername(), data.getPassword())) {
 				result = "LoginSuccessful";
 				playerNames.add(data.getUsername());
+				arg1.setName(data.getUsername());
 			}
 			else { result = "LoginError"; }
 			
@@ -120,6 +125,7 @@ public class Server extends AbstractServer {
 			if(data.getLobbyCode()== lobbycode) {
 				result = new JoinLobbyData(data.getNickname(), data.getLobbyCode(), "JoinSuccess");
 				playerNames.add(data.getNickname());
+				arg1.setName(data.getNickname());
 				sendToAllClients(playerNames);
 			}
 			else { result = new JoinLobbyData(data.getNickname(), data.getLobbyCode(), "JoinError"); }

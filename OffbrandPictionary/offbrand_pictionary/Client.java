@@ -15,6 +15,7 @@ public class Client extends AbstractClient {
 	private WaitingRoomControl wrc;
 	private JoinLobbyControl jlc;
 	private WinningControl winc;
+	private String name;
 	
 	// Constructor
 	public Client() { super("localhost",8300); }
@@ -28,6 +29,14 @@ public class Client extends AbstractClient {
 	public void setWaitControl(WaitingRoomControl wrc) { this.wrc = wrc; }
 	public void setJoinLobbyControl(JoinLobbyControl jlc) { this.jlc = jlc; } 
 	public void setWinningControl(WinningControl winc) { this.winc = winc; }
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
 		
 	protected void handleMessageFromServer(Object arg0) {
 		if (arg0 instanceof String) {
