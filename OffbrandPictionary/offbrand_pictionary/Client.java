@@ -65,10 +65,6 @@ public class Client extends AbstractClient {
 			else if (msg.equals("ReadiedUp")) {
 				wrc.readiedUp();
 			}
-			else if (msg.equals("Drawer")) {
-				wrc.startGameDraw();
-				dc.setBackground();
-			}
 			else if (msg.equals("Guesser")) {
 				wrc.startGameGuess();
 			}
@@ -102,6 +98,11 @@ public class Client extends AbstractClient {
 		}
 		else if (arg0 instanceof ArrayList) {
 			wrc.setUserArea((ArrayList<String>)arg0);
+		}
+		else if (arg0 instanceof DrawerData) {
+			DrawerData data = (DrawerData)arg0;
+			wrc.startGameDraw(data.getWord());
+			dc.setBackground();
 		}
 	}
 }

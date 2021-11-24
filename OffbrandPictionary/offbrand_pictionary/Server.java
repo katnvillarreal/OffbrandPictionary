@@ -69,8 +69,10 @@ public class Server extends AbstractServer {
 					Thread[] players = this.getClientConnections();
 					for(int round = 0; round < 3; round++) {
 						for (int i = 0; i < players.length; i++) {
+							currentWord = database.getWord(catChoice);
 							Thread drawer = players[i];
-							try { ((ConnectionToClient) drawer).sendToClient("Drawer"); } 
+							DrawerData data = new DrawerData(currentWord);
+							try { ((ConnectionToClient) drawer).sendToClient(data); } 
 							catch (IOException e) {	e.printStackTrace(); }
 							// Sends "Drawer" to the client that is currently in up from the array
 							// Puts the Drawer panel up for the currently selected drawer
