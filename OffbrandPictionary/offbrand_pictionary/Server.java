@@ -12,7 +12,7 @@ import ocsf.server.ConnectionToClient;
 public class Server extends AbstractServer {
 	// Set private data variables
 	private Database database;
-	private int lobbycode, currentPlayers;
+	private int lobbycode, currentPlayers, numPlayers;
 	private String catChoice, currentWord;
 	private ArrayList<String> playerNames;
 	
@@ -63,12 +63,11 @@ public class Server extends AbstractServer {
 			String msg = (String)arg0;
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
-				if (currentPlayers == playerNames.size()) {
+				if (currentPlayers == numPlayers) {
 					sendToAllClients("Start Game");
 				}
 			}
 			else if (msg.equals("Cancel")) {
-				currentPlayers--;
 				playerNames.remove(arg1.getName());
 			}
 		}
@@ -110,7 +109,9 @@ public class Server extends AbstractServer {
 			
 			catChoice = data.getCat();
 			lobbycode = data.getCode();
-			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbycode);
+			numPlayers = data.getNumPlayers();
+			
+			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbycode, numPlayers);
 			sendToAllClients(playerNames);
 			
 			try { arg1.sendToClient(result); }

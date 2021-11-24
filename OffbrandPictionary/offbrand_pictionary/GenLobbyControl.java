@@ -42,8 +42,7 @@ public class GenLobbyControl implements ActionListener{
 		        return;
 			}
 			else {
-				int lobbyCode = gen();
-			    GenLobbyData data = new GenLobbyData(catGroup.getSelection().getActionCommand(), lobbyCode);
+			    GenLobbyData data = new GenLobbyData(catGroup.getSelection().getActionCommand(), gen(), lobbyPanel.getPlayers());
 			    try { client.sendToServer(data); }
 			    catch (IOException e) { displayError("Error connecting to the server."); }
 

@@ -27,8 +27,6 @@ public class LoginControl implements ActionListener {
 			loginPanel.setPassword("");
 			CardLayout cardLayout = (CardLayout)container.getLayout();
 		    cardLayout.show(container, "1");
-		    try { client.sendToServer("Cancel"); } 
-	    	catch (IOException e) { displayError("Error connecting to the server."); }
 		}
 		// When Login is pressed
 		else if (command == "Login") {
