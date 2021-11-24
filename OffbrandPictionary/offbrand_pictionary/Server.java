@@ -66,20 +66,30 @@ public class Server extends AbstractServer {
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
 				if (currentPlayers == numPlayers) {
-					ConnectionToClient[] players = (ConnectionToClient[]) this.getClientConnections();
-					for (int i = 0; i < players.length; i++) {
-					    ConnectionToClient drawer = players[i];
-					    try { drawer.sendToClient("Drawer"); } 
-					    catch (IOException e) {	e.printStackTrace(); }
-					    // Sends "Drawer" to the client that is currently in up from the array
-					    // Puts the Drawer panel up for the currently selected drawer
-					    for (int j = i+1; j < players.length; j++) {
-					        ConnectionToClient guesser = players[j];
-					        try { guesser.sendToClient("Guesser"); } 
-					        catch (IOException e) {	e.printStackTrace(); }
-					        // Sends "Guesser" to the clients that are going to be guessing
-					        // Pulls up the guesser panel for them and writes in the current drawers name
-					    }
+					Thread[] players = this.getClientConnections();
+					for(int round = 0; round < 3; round++) {
+						for (int i = 0; i < players.length; i++) {
+							Thread drawer = players[i];
+							try { ((ConnectionToClient) drawer).sendToClient("Drawer"); } 
+							catch (IOException e) {	e.printStackTrace(); }
+							// Sends "Drawer" to the client that is currently in up from the array
+							// Puts the Drawer panel up for the currently selected drawer
+							for (int j = 0; j < players.length; j++) {
+								if (j != i) {
+									Thread guesser = players[j];
+									try { ((ConnectionToClient) guesser).sendToClient("Guesser"); } 
+									catch (IOException e) {	e.printStackTrace(); }
+									// Sends "Guesser" to the clients that are going to be guessing
+									// Pulls up the guesser panel for them and writes in the current drawers name
+								}
+							}
+							try {
+								Thread.sleep(60000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
 					}
 				}
 				try { arg1.sendToClient("ReadiedUp"); } 
