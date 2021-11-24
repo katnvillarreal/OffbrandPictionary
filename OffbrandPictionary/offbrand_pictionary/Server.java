@@ -52,6 +52,7 @@ public class Server extends AbstractServer {
 	public void handleMessageFromClient(Object arg0, ConnectionToClient arg1) {
 		// When getting an image from the drawer panel
 		System.out.println("Message received from Client");
+		// Get Image from the Drawer Panel
 		if (arg0 instanceof BufferedImage) {
 			System.out.println("Buffered Image received");
 			BufferedImage img = (BufferedImage)arg0;
@@ -59,16 +60,21 @@ public class Server extends AbstractServer {
 			try {arg1.sendToClient(img); }
 			catch (IOException e) { e.printStackTrace(); }
 		}
+		// Received a string from the client
 		else if (arg0 instanceof String) {
 			String msg = (String)arg0;
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
-				if (currentPlayers == numPlayers) {
+				if (currentPlayers == numPlayers-1) {
 					sendToAllClients("Start Game");
 				}
+				try { arg1.sendToClient("ReadiedUp"); } 
+				catch (IOException e) { e.printStackTrace(); }
 			}
 			else if (msg.equals("Cancel")) {
 				playerNames.remove(arg1.getName());
+				currentPlayers--;
+				sendToAllClients(playerNames);
 			}
 		}
 		// When getting a CreateAccountData object

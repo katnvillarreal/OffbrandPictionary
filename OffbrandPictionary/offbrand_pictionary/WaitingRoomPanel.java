@@ -18,9 +18,11 @@ public class WaitingRoomPanel extends JPanel{
 	// Private Data Members
 	private JLabel lblCode;
 	private JTextArea playerNames;
+	private JLabel ready;
 	
 	// Getters
 	public String getLobbyCode() { return lblCode.getText(); }
+	public String getReadyStatus() { return ready.getText(); }
 
 	// Setters
 	public void setLobbyCode(String lobbyCode) { lblCode.setText(lobbyCode); }
@@ -30,6 +32,7 @@ public class WaitingRoomPanel extends JPanel{
 			playerNames.append(name + "\n");
 		}
 	}
+	public void setReady() { ready.setText("You've Readied up!"); }
 	
 	public WaitingRoomPanel(WaitingRoomControl wrc) {
 		setBackground(new Color(0, 0, 0));
@@ -82,5 +85,20 @@ public class WaitingRoomPanel extends JPanel{
 		playerNames.setBounds(251, 11, 184, 344);
 		playerNames.setText("");
 		panel.add(playerNames);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setForeground(Color.BLACK);
+		btnCancel.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		btnCancel.setBackground(Color.LIGHT_GRAY);
+		btnCancel.setBounds(25, 305, 190, 50);
+		btnCancel.addActionListener(wrc);
+		panel.add(btnCancel);
+		
+		ready = new JLabel("");
+		ready.setForeground(Color.BLUE);
+		ready.setHorizontalAlignment(SwingConstants.CENTER);
+		ready.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		ready.setBounds(25, 178, 184, 60);
+		panel.add(ready);
 	}
 }

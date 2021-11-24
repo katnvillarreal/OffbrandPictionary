@@ -61,6 +61,14 @@ public class Client extends AbstractClient {
 			else if (msg.equals("CorrectWord")) { gc.correctWord(); }
 			else if (msg.equals("IncorrectWord")) { gc.displayError("Guess is Incorrect"); }
 			
+			// Starting the game when everyone is readied up
+			else if (msg.equals("ReadiedUp")) {
+				wrc.readiedUp();
+			}
+			else if (msg.equals("Start Game")) {
+				wrc.startGame();
+			}
+			
 			//TODO: Add in the server sending back a string of the rankings of players
 			// to the winning control
 		}

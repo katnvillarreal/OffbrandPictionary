@@ -27,7 +27,18 @@ public class WaitingRoomControl implements ActionListener{
 	    
 	    // If Ready Up is pressed
 	    if (command == "Ready Up") {
-	    	try { client.sendToServer("addPlayer"); }
+	    	try { 
+	    		client.sendToServer("addPlayer");
+	    	}
+		    catch (IOException e) { System.out.println("Error sending data to server."); }
+	    }
+	    // If Cancel is pressed
+	    else if (command == "Cancel") {
+	    	try { 
+	    		CardLayout cardLayout = (CardLayout)container.getLayout();
+	    		cardLayout.show(container, "1");
+	    		client.sendToServer("Cancel");
+	    	}
 		    catch (IOException e) { System.out.println("Error sending data to server."); }
 	    }
 	}
@@ -42,5 +53,18 @@ public class WaitingRoomControl implements ActionListener{
 	public void setUserArea(ArrayList<String> playerNames) {
 		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
 		waitingRoomPanel.setPlayerList(playerNames);
+	}
+	
+	public void readiedUp() {
+		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
+		waitingRoomPanel.setReady();
+	}
+	
+	// Start the Game when everyone is ready
+	public void startGame() {
+		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
+		guesserPanel.setError("");
+		CardLayout cardLayout = (CardLayout)container.getLayout();
+		cardLayout.show(container, "8");
 	}
 }
