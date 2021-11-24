@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import ocsf.client.AbstractClient;
 
 public class Client extends AbstractClient {
+	// Private Data Members
 	private LoginControl lc;
 	private CreateAccountControl cac;
 	private GenLobbyControl glc;
@@ -15,40 +16,18 @@ public class Client extends AbstractClient {
 	private JoinLobbyControl jlc;
 	private WinningControl winc;
 	
-	public Client() {
-		super("localhost",8300);
-	}
+	// Constructor
+	public Client() { super("localhost",8300); }
 	
-	public void setLoginControl(LoginControl lc) {
-		this.lc = lc;
-	}
-	
-	public void setCreateAccountControl(CreateAccountControl cac) {
-		this.cac = cac;
-	}
-	
-	public void setGenControl(GenLobbyControl glc) {
-		this.glc = glc;
-	}
-	
-	public void setDrawerControl(DrawerControl dc) {
-		this.dc = dc;
-	}
-	
-	public void setGuessControl(GuessControl gc) {
-		this.gc = gc;
-	}
-	
-	public void setWaitControl(WaitingRoomControl wrc) {
-		this.wrc = wrc;
-	}
-	
-	public void setJoinLobbyControl(JoinLobbyControl jlc) {
-		this.jlc = jlc;
-	}
-	public void setWinningControl(WinningControl winc) {
-		this.winc = winc;
-	}
+	// Setters of controls
+	public void setLoginControl(LoginControl lc) { this.lc = lc; }
+	public void setCreateAccountControl(CreateAccountControl cac) { this.cac = cac; }
+	public void setGenControl(GenLobbyControl glc) { this.glc = glc; }
+	public void setDrawerControl(DrawerControl dc) { this.dc = dc; }
+	public void setGuessControl(GuessControl gc) { this.gc = gc; }
+	public void setWaitControl(WaitingRoomControl wrc) { this.wrc = wrc; }
+	public void setJoinLobbyControl(JoinLobbyControl jlc) { this.jlc = jlc; } 
+	public void setWinningControl(WinningControl winc) { this.winc = winc; }
 	
 	protected void handleMessageFromServer(Object arg0) {
 		if (arg0 instanceof String) {
@@ -58,38 +37,38 @@ public class Client extends AbstractClient {
 				// client needs to send words
 				dc.setWord(choice[0]);
 			}
-			else if (msg.equals("LoginSuccessful")) {
-				lc.loginSuccess();
-			}
+			//Login
+			else if (msg.equals("LoginSuccessful")) { lc.loginSuccess(); }
 			else if (msg.equals("LoginError")) {
 				lc.displayError("The username/password are incorrect.");
 			}
+			//CreateAccount
 			else if (msg.equals("CreateAccountSuccessful")) {
 				cac.createAccountSuccess();
 			}
 			else if (msg.equals("ErrorUsername")) {
 				cac.displayError("The username is already in use.");
 			}
-			else if (msg.equals("CorrectWord")) {
-				gc.correctWord();
-			}
-			else if (msg.equals("IncorrectWord")) {
-				gc.displayError("Guess is Incorrect");
-			}
+			//Guessing word
+			else if (msg.equals("CorrectWord")) { gc.correctWord(); }
+			else if (msg.equals("IncorrectWord")) { gc.displayError("Guess is Incorrect"); }
 			
 			//TODO: Add in the server sending back a string of the rankings of players
 			// to the winning control
 		}
+		// Getting an image from Drawer
 		else if (arg0 instanceof BufferedImage) {
 			BufferedImage img = (BufferedImage)arg0;
 			gc.setImage(img);
 		}
+		// GenLobby
 		else if (arg0 instanceof GenLobbyData) {
 			GenLobbyData data = (GenLobbyData)arg0;
 			wrc.setLobbyCode(Integer.toString(data.getCode()));
 			dc.setWord(data.getCat());
 			glc.success();
 		}
+		// JoinLobby
 		else if (arg0 instanceof JoinLobbyData) {
 			JoinLobbyData data = (JoinLobbyData)arg0;
 			

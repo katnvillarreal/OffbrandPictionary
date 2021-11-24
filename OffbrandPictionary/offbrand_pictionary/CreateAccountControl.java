@@ -7,9 +7,11 @@ import java.io.*;
 import javax.swing.*;
 
 public class CreateAccountControl implements ActionListener{
+	// Private Data Members
 	private JPanel container;
 	private Client client;
 	
+	// Constructor
 	public CreateAccountControl(JPanel container, Client client) {
 		this.container = container;
 		this.client = client;
@@ -42,15 +44,15 @@ public class CreateAccountControl implements ActionListener{
 	    		displayError("You must enter a username and password.");
 	    		return;
 	    	}
+	    	// Make sure the passwords match
 	    	else if (!password.equals(passwordVerify)) {
 	    		displayError("The two passwords did not match.");
 	    		return;
 	    	}
 	    	
 	    	CreateAccountData data = new CreateAccountData(username, password, passwordVerify);
-	    	try {
-	    		client.sendToServer(data);
-	    	} catch (IOException e) { displayError("Error connecting to the server."); }
+	    	try { client.sendToServer(data); } 
+	    	catch (IOException e) { displayError("Error connecting to the server."); }
 	    }
 	}
 	

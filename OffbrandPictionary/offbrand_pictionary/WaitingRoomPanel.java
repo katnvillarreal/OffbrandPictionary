@@ -15,17 +15,15 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 public class WaitingRoomPanel extends JPanel{
+	// Private Data Members
 	private JLabel lblCode;
 	private JTextArea playerNames;
 	
-	public String getLobbyCode() {
-		return lblCode.getText();
-	}
-	
-	public void setLobbyCode(String lobbyCode) {
-		lblCode.setText(lobbyCode);;
-	}
-	
+	// Getters
+	public String getLobbyCode() { return lblCode.getText(); }
+
+	// Setters
+	public void setLobbyCode(String lobbyCode) { lblCode.setText(lobbyCode); }
 	public void setPlayerList(ArrayList<String> pNames) {
 		for (String name : pNames) {
 			playerNames.append(name + "\n");
@@ -86,7 +84,5 @@ public class WaitingRoomPanel extends JPanel{
 		playerNames.setBounds(262, 11, 173, 344);
 		playerNames.setText("");
 		panel.add(playerNames);
-		
-		
 	}
 }

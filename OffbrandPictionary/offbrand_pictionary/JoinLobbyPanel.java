@@ -8,33 +8,21 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class JoinLobbyPanel extends JPanel{
-	private JTextField textField_Nickname;
-	private JTextField textField_LobbyCode;
+	// Private data Members
+	private JTextField tf_Nickname;
+	private JTextField tf_LobbyCode;
 	private JLabel lblError;
 	
-	public String getNickname() {
-		return textField_Nickname.getText();
-	}
+	// Getters
+	public String getNickname()  {return tf_Nickname.getText(); }
+	public String getLobbyCode() { return tf_LobbyCode.getText(); }
 	
-	public String getLobbyCode() {
-		return textField_LobbyCode.getText();
-	}
-	
-	public void setNickname(String nick) {
-		textField_Nickname.setText(nick);
-	}
-	
-	public void setLobbyCode(String code) {
-		textField_LobbyCode.setText(code);
-	}
-	
-	public void setError(String error) {
-		lblError.setText(error);
-	}
+	// Setters
+	public void setNickname(String nick) { tf_Nickname.setText(nick); }
+	public void setLobbyCode(String code) { tf_LobbyCode.setText(code); }
+	public void setError(String error) { lblError.setText(error); }
 	
 	public JoinLobbyPanel(JoinLobbyControl jlc) {
 		setBackground(new Color(0, 0, 0));
@@ -66,17 +54,17 @@ public class JoinLobbyPanel extends JPanel{
 		lblLobbyCode.setBounds(20, 119, 107, 31);
 		panel.add(lblLobbyCode);
 		
-		textField_Nickname = new JTextField();
-		textField_Nickname.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField_Nickname.setBounds(127, 102, 122, 21);
-		panel.add(textField_Nickname);
-		textField_Nickname.setColumns(10);
+		tf_Nickname = new JTextField();
+		tf_Nickname.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_Nickname.setBounds(127, 102, 122, 21);
+		panel.add(tf_Nickname);
+		tf_Nickname.setColumns(10);
 		
-		textField_LobbyCode = new JTextField();
-		textField_LobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField_LobbyCode.setBounds(127, 126, 122, 21);
-		panel.add(textField_LobbyCode);
-		textField_LobbyCode.setColumns(10);
+		tf_LobbyCode = new JTextField();
+		tf_LobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tf_LobbyCode.setBounds(127, 126, 122, 21);
+		panel.add(tf_LobbyCode);
+		tf_LobbyCode.setColumns(10);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setForeground(Color.BLACK);

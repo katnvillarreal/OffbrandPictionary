@@ -10,9 +10,11 @@ import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 
 public class GenLobbyControl implements ActionListener{
+	// Private Data Members
 	private JPanel container;
 	private Client client;
 	
+	// Constructor
 	public GenLobbyControl(JPanel container, Client client) {
 		this.container = container;
 		this.client = client;
@@ -21,12 +23,14 @@ public class GenLobbyControl implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		String command = ae.getActionCommand();
 		
+		// When Cancel is pressed go back to LoginPanel
 		if (command == "Cancel") {
 			GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(3);
 			lobbyPanel.setGroup();
 			CardLayout cardLayout = (CardLayout)container.getLayout();
 		    cardLayout.show(container, "1");
 		}
+		// When GenerateLobby is pressed
 		else if (command == "Generate Lobby") {
 			GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(3);
 			ButtonGroup catGroup = lobbyPanel.getGroup();
@@ -44,16 +48,19 @@ public class GenLobbyControl implements ActionListener{
 		}
 	}
 	
+	// Generate a Lobby Code
 	public int gen() {
 	    Random r = new Random( System.currentTimeMillis() );
 	    return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
 	}
 	
+	// When Lobby is successfully generated go to Waiting room
 	public void success() {
 		CardLayout cardLayout = (CardLayout)container.getLayout();
 		cardLayout.show(container,  "6");
 	}
 	
+	// Display error
 	public void displayError(String error) {
 		GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(3);
 		lobbyPanel.setError(error);

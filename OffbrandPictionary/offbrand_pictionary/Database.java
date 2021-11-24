@@ -5,10 +5,11 @@ import java.io.*;
 import java.sql.*;
 
 public class Database {
-	
+	// Private Data Members
 	private Connection conn;
 	//Add any other data fields you like – at least a Connection object is mandatory
 	
+	// Constructor
 	public Database() {
 		try {
 			//Create a properties
@@ -25,6 +26,7 @@ public class Database {
 		catch (Exception e) { e.printStackTrace(); }
 	}
 	
+	// Query the database
 	public ArrayList<String> query(String query) {
 		//Add your code here
 		ArrayList<String>  list = new ArrayList<String>();
@@ -43,6 +45,7 @@ public class Database {
 		return list;
 	}
 	
+	// Inserts
 	public void executeDML(String dml) throws SQLException {
 		//Add your code here
 		Statement stmt = conn.createStatement();
@@ -76,6 +79,7 @@ public class Database {
 		else { return false; }
 	}
 	
+	// Get a word from the database at random
 	public String getWord(String choice) {
 		String cmd = "select * from words where category='" + choice + "' order by RAND() LIMIT 1;";
 		ArrayList<String> result = this.query(cmd);

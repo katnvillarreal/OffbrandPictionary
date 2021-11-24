@@ -1,12 +1,9 @@
 package offbrand_pictionary;
 
-import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 
 public class GuessControl implements ActionListener{

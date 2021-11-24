@@ -3,39 +3,32 @@ package offbrand_pictionary;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 public class GenLobbyPanel extends JPanel{
+	// Private Data Members
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JLabel lblError;
 	private JComboBox comboBox;
 	
-	public ButtonGroup getGroup() {
-		return buttonGroup;
-	}
-	
-	public void setGroup() {
-		buttonGroup.clearSelection();
-	}
-	
+	// Getters
+	public ButtonGroup getGroup() { return buttonGroup; }
 	public int getPlayers() {
 		return Integer.parseInt((String) comboBox.getSelectedItem());
 	}
 	
-	public void setError(String error) {
-		lblError.setText(error);
-	}
+	// Setters
+	public void setGroup() { buttonGroup.clearSelection(); }
+	public void setError(String error) { lblError.setText(error); }
 	
+	// Constructor
 	public GenLobbyPanel(GenLobbyControl glc) {
 		setBackground(Color.BLACK);
 		setLayout(null);

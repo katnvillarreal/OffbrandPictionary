@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class WaitingRoomControl implements ActionListener{
+	// Private Data Members
 	private JPanel container;
 	private Client client;
 	
+	// Constructor
 	public WaitingRoomControl(JPanel container, Client client) {
 		this.container = container;
 		this.client = client;
@@ -35,11 +37,13 @@ public class WaitingRoomControl implements ActionListener{
 	    }
 	}
 	
+	// Set the lobby code
 	public void setLobbyCode(String lobbyCode) {
 		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
 		waitingRoomPanel.setLobbyCode(lobbyCode);
 	}
 	
+	// Set what users are in the waiting room
 	public void setUserArea(ArrayList<String> playerNames) {
 		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
 		waitingRoomPanel.setPlayerList(playerNames);

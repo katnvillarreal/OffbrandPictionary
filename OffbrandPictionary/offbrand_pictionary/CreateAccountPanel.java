@@ -11,38 +11,28 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class CreateAccountPanel extends JPanel{
-	private JTextField textField_Username;
-	private JTextField textField_Password;
-	private JTextField textField_ReenterPassword;
+	// Private Data Members
+	private JTextField tf_Username;
+	private JTextField tf_Password;
+	private JTextField tf_ReenterPassword;
 	private JLabel lblError;
 	
-	public String getUsername() {
-		return textField_Username.getText();
-	}
-	
-	public String getPassword() {
-		return textField_Password.getText();
-	}
-	
+	// Getters
+	public String getUsername() { return tf_Username.getText(); }
+	public String getPassword() { return tf_Password.getText(); }
 	public String getReenteredPassword() {
-		return textField_ReenterPassword.getText();
-	}
-	public void setPassword(String password) {
-		this.textField_Password.setText(password);
+		return tf_ReenterPassword.getText();
 	}
 	
-	public void setUsername(String username) {
-		this.textField_Password.setText(username);
+	// Setters
+	public void setUsername(String username) { this.tf_Username.setText(username); }
+	public void setPassword(String password) { this.tf_Password.setText(password); }
+	public void setReenteredPassword(String pass) { 
+		this.tf_ReenterPassword.setText(pass);
 	}
+	public void setError(String error) { lblError.setText(error); }
 	
-	public void setReenteredPassword(String pass) {
-		this.textField_ReenterPassword.setText(pass);
-	}
-	
-	public void setError(String error) {
-		lblError.setText(error);
-	}
-	
+	// Constructor
 	public CreateAccountPanel(CreateAccountControl cap) {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
@@ -76,20 +66,20 @@ public class CreateAccountPanel extends JPanel{
 		lblReenterPassword.setBounds(24, 193, 148, 32);
 		panel.add(lblReenterPassword);
 		
-		textField_Username = new JTextField();
-		textField_Username.setBounds(180, 122, 200, 27);
-		panel.add(textField_Username);
-		textField_Username.setColumns(10);
+		tf_Username = new JTextField();
+		tf_Username.setBounds(180, 122, 200, 27);
+		panel.add(tf_Username);
+		tf_Username.setColumns(10);
 		
-		textField_Password = new JTextField();
-		textField_Password.setBounds(180, 160, 200, 27);
-		panel.add(textField_Password);
-		textField_Password.setColumns(10);
+		tf_Password = new JTextField();
+		tf_Password.setBounds(180, 160, 200, 27);
+		panel.add(tf_Password);
+		tf_Password.setColumns(10);
 		
-		textField_ReenterPassword = new JTextField();
-		textField_ReenterPassword.setBounds(180, 198, 200, 27);
-		panel.add(textField_ReenterPassword);
-		textField_ReenterPassword.setColumns(10);
+		tf_ReenterPassword = new JTextField();
+		tf_ReenterPassword.setBounds(180, 198, 200, 27);
+		panel.add(tf_ReenterPassword);
+		tf_ReenterPassword.setColumns(10);
 		
 		lblError = new JLabel("");
 		lblError.setHorizontalAlignment(SwingConstants.CENTER);

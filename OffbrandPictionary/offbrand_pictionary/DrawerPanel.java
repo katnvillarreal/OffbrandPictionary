@@ -4,29 +4,22 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.image.BufferedImage;
-import java.util.concurrent.*;
-
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JSeparator;
 import javax.swing.JProgressBar;
 
 public class DrawerPanel extends JPanel{
+	// Private Data Members
 	private JLabel lblWord;
 	private BufferedImage img;
 	
-	public String getWord() {
-		return lblWord.getText();
-	}
-	
-	public void setWord(String word) {
-		lblWord.setText(word);
-	}
-	
+	// Getters
+	public String getWord() { return lblWord.getText(); }
+	// Setters
+	public void setWord(String word) { lblWord.setText(word); }
+	// Constructor
 	public DrawerPanel(DrawerControl dc, PaintPanel canvas) {
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
