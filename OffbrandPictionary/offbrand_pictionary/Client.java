@@ -12,6 +12,7 @@ public class Client extends AbstractClient {
 	private GuessControl gc;
 	private WaitingRoomControl wrc;
 	private JoinLobbyControl jlc;
+	private WinningControl winc;
 	
 	public Client() {
 		super("localhost",8300);
@@ -43,6 +44,9 @@ public class Client extends AbstractClient {
 	
 	public void setJoinLobbyControl(JoinLobbyControl jlc) {
 		this.jlc = jlc;
+	}
+	public void setWinningControl(WinningControl winc) {
+		this.winc = winc;
 	}
 	
 	protected void handleMessageFromServer(Object arg0) {
@@ -77,6 +81,9 @@ public class Client extends AbstractClient {
 			else if (msg.equals("IncorrectWord")) {
 				gc.displayError("Guess is Incorrect");
 			}
+			
+			//TODO: Add in the server sending back a string of the rankings of players
+			// to the winning control
 		}
 		else if (arg0 instanceof BufferedImage) {
 			BufferedImage img = (BufferedImage)arg0;
