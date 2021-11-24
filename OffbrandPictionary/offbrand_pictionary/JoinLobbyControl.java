@@ -59,7 +59,7 @@ public class JoinLobbyControl implements ActionListener{
 	
 	// Display an error on CreateAccountPanel
 	public void displayError(String error) {
-		JoinLobbyPanel joinLobbyPanel = (JoinLobbyPanel)container.getComponent(5);
+		JoinLobbyPanel joinLobbyPanel = (JoinLobbyPanel)container.getComponent(4);
 		joinLobbyPanel.setError(error);
 	}
 }

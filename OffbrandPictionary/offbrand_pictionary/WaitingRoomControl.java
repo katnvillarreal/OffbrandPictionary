@@ -34,10 +34,12 @@ public class WaitingRoomControl implements ActionListener{
 	    }
 	    // If Cancel is pressed
 	    else if (command == "Cancel") {
-	    	try { 
+	    	try {
+	    		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
+	    		waitingRoomPanel.setReady("");
 	    		CardLayout cardLayout = (CardLayout)container.getLayout();
 	    		cardLayout.show(container, "1");
-	    		client.sendToServer("Cancel");
+	    		client.sendToServer("WRCancel");
 	    	}
 		    catch (IOException e) { System.out.println("Error sending data to server."); }
 	    }
@@ -57,7 +59,7 @@ public class WaitingRoomControl implements ActionListener{
 	
 	public void readiedUp() {
 		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
-		waitingRoomPanel.setReady();
+		waitingRoomPanel.setReady("You've Readied!");
 	}
 	
 	// Start the Game when everyone is ready

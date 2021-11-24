@@ -32,7 +32,7 @@ public class WaitingRoomPanel extends JPanel{
 			playerNames.append(name + "\n");
 		}
 	}
-	public void setReady() { ready.setText("You've Readied up!"); }
+	public void setReady(String ready) { this.ready.setText(ready); }
 	
 	public WaitingRoomPanel(WaitingRoomControl wrc) {
 		setBackground(new Color(0, 0, 0));

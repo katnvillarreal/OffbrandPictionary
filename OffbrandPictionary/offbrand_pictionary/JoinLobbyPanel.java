@@ -8,6 +8,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class JoinLobbyPanel extends JPanel{
 	// Private data Members
@@ -46,30 +47,30 @@ public class JoinLobbyPanel extends JPanel{
 		
 		JLabel lblNickname = new JLabel("Nickname:");
 		lblNickname.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNickname.setBounds(21, 100, 96, 21);
+		lblNickname.setBounds(32, 120, 96, 21);
 		panel.add(lblNickname);
 		
 		JLabel lblLobbyCode = new JLabel("Lobby Code:");
 		lblLobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblLobbyCode.setBounds(20, 119, 107, 31);
+		lblLobbyCode.setBounds(31, 139, 107, 31);
 		panel.add(lblLobbyCode);
 		
 		tf_Nickname = new JTextField();
 		tf_Nickname.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tf_Nickname.setBounds(127, 102, 122, 21);
+		tf_Nickname.setBounds(138, 122, 122, 21);
 		panel.add(tf_Nickname);
 		tf_Nickname.setColumns(10);
 		
 		tf_LobbyCode = new JTextField();
 		tf_LobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tf_LobbyCode.setBounds(127, 126, 122, 21);
+		tf_LobbyCode.setBounds(138, 146, 122, 21);
 		panel.add(tf_LobbyCode);
 		tf_LobbyCode.setColumns(10);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setForeground(Color.BLACK);
 		btnSubmit.setBackground(Color.LIGHT_GRAY);
-		btnSubmit.setBounds(55, 193, 161, 38);
+		btnSubmit.setBounds(55, 217, 161, 38);
 		btnSubmit.addActionListener(jlc);
 		panel.add(btnSubmit);
 		
@@ -79,15 +80,16 @@ public class JoinLobbyPanel extends JPanel{
 		panel.add(lblNewLabel);
 		
 		lblError = new JLabel("");
+		lblError.setHorizontalAlignment(SwingConstants.CENTER);
 		lblError.setForeground(new Color(255, 0, 0));
-		lblError.setBounds(10, 218, 142, 13);
+		lblError.setBounds(10, 96, 277, 13);
 		panel.add(lblError);
 		
 		JButton btnCanel = new JButton("Cancel");
 		btnCanel.setForeground(Color.BLACK);
 		btnCanel.setBackground(Color.LIGHT_GRAY);
 		btnCanel.addActionListener(jlc);
-		btnCanel.setBounds(55, 245, 161, 38);
+		btnCanel.setBounds(55, 269, 161, 38);
 		panel.add(btnCanel);
 	}
 

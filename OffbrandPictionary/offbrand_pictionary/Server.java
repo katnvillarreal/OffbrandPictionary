@@ -65,13 +65,17 @@ public class Server extends AbstractServer {
 			String msg = (String)arg0;
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
-				if (currentPlayers == numPlayers-1) {
+				if (currentPlayers == numPlayers) {
 					sendToAllClients("Start Game");
 				}
 				try { arg1.sendToClient("ReadiedUp"); } 
 				catch (IOException e) { e.printStackTrace(); }
 			}
 			else if (msg.equals("Cancel")) {
+				playerNames.remove(arg1.getName());
+				sendToAllClients(playerNames);
+			}
+			else if (msg.equals("WRCancel")) {
 				playerNames.remove(arg1.getName());
 				currentPlayers--;
 				sendToAllClients(playerNames);
@@ -129,7 +133,7 @@ public class Server extends AbstractServer {
 			JoinLobbyData data = (JoinLobbyData)arg0;
 			
 			JoinLobbyData result;
-			if(data.getLobbyCode()== lobbycode) {
+			if(data.getLobbyCode() == lobbycode) {
 				result = new JoinLobbyData(data.getNickname(), data.getLobbyCode(), "JoinSuccess");
 				playerNames.add(data.getNickname());
 				arg1.setName(data.getNickname());
