@@ -84,7 +84,7 @@ public class Server extends AbstractServer {
 								}
 							}
 							try {
-								Thread.sleep(60000);
+								Thread.sleep(7000);
 							} catch (InterruptedException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

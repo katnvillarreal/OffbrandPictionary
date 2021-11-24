@@ -42,4 +42,9 @@ public class DrawerControl implements ActionListener{
 		DrawerPanel drawPanel = (DrawerPanel)container.getComponent(6);
 		drawPanel.setWord(word);
 	}
+	
+	public void setBackground() {
+		DrawerPanel drawPanel = (DrawerPanel)container.getComponent(6);
+		drawPanel.setCanvas();
+	}
 }

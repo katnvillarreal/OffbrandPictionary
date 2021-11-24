@@ -67,6 +67,7 @@ public class Client extends AbstractClient {
 			}
 			else if (msg.equals("Drawer")) {
 				wrc.startGameDraw();
+				dc.setBackground();
 			}
 			else if (msg.equals("Guesser")) {
 				wrc.startGameGuess();

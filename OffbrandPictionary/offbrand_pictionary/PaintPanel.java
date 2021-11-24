@@ -37,6 +37,13 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
         else { n++; }
     }
     
+    public void setBack() {
+    	Graphics g = bufImage.getGraphics();
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(Color.WHITE);
+		repaint();
+    }
+    
     @Override public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         

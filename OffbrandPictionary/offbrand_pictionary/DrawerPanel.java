@@ -14,11 +14,13 @@ public class DrawerPanel extends JPanel{
 	// Private Data Members
 	private JLabel lblWord;
 	private BufferedImage img;
+	private PaintPanel color;
 	
 	// Getters
 	public String getWord() { return lblWord.getText(); }
 	// Setters
 	public void setWord(String word) { lblWord.setText(word); }
+	public void setCanvas() { color.setBack(); }
 	// Constructor
 	public DrawerPanel(DrawerControl dc, PaintPanel canvas) {
 		setBackground(new Color(0, 0, 0));
@@ -33,7 +35,8 @@ public class DrawerPanel extends JPanel{
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBounds(20, 27, 418, 288);
-		panel_1.add(canvas);
+		color = canvas;
+		panel_1.add(color);
 		panel.add(panel_1);
 		
 		JButton btnSizeUp = new JButton("Size ++");
