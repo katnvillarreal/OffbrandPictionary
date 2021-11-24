@@ -34,17 +34,18 @@ public class GenLobbyControl implements ActionListener{
 		else if (command == "Generate Lobby") {
 			GenLobbyPanel lobbyPanel = (GenLobbyPanel)container.getComponent(3);
 			ButtonGroup catGroup = lobbyPanel.getGroup();
-			int numPlayers = lobbyPanel.getPlayers();
-			int lobbyCode = gen();
-		    GenLobbyData data = new GenLobbyData(catGroup.getSelection().getActionCommand(), lobbyCode, numPlayers);
 			
-			if (data.getCat() == null) {
+			if (catGroup.getSelection() == null) {
 				displayError("You must choose a category type.");
 		        return;
 			}
-			
-			try { client.sendToServer(data); }
-		    catch (IOException e) { displayError("Error connecting to the server."); }
+			else {
+				int lobbyCode = gen();
+			    GenLobbyData data = new GenLobbyData(catGroup.getSelection().getActionCommand(), lobbyCode);
+			    try { client.sendToServer(data); }
+			    catch (IOException e) { displayError("Error connecting to the server."); }
+
+			}
 		}
 	}
 	

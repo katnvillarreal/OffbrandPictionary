@@ -28,13 +28,12 @@ public class Client extends AbstractClient {
 	public void setWaitControl(WaitingRoomControl wrc) { this.wrc = wrc; }
 	public void setJoinLobbyControl(JoinLobbyControl jlc) { this.jlc = jlc; } 
 	public void setWinningControl(WinningControl winc) { this.winc = winc; }
-	
+		
 	protected void handleMessageFromServer(Object arg0) {
 		if (arg0 instanceof String) {
 			String msg = (String)arg0;
 			if (msg.contains(",")) {
 				String[] choice = msg.split(",");
-				// client needs to send words
 				dc.setWord(choice[0]);
 			}
 			//Login

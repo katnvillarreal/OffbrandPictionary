@@ -25,6 +25,7 @@ public class WaitingRoomPanel extends JPanel{
 	// Setters
 	public void setLobbyCode(String lobbyCode) { lblCode.setText(lobbyCode); }
 	public void setPlayerList(ArrayList<String> pNames) {
+		playerNames.setText("");
 		for (String name : pNames) {
 			playerNames.append(name + "\n");
 		}
@@ -41,9 +42,10 @@ public class WaitingRoomPanel extends JPanel{
 		panel.setLayout(null);
 		
 		JLabel lblLobbyCode = new JLabel("Lobby Code");
+		lblLobbyCode.setForeground(Color.BLACK);
 		lblLobbyCode.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLobbyCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblLobbyCode.setBounds(36, 24, 159, 39);
+		lblLobbyCode.setFont(new Font("Tahoma", Font.BOLD, 28));
+		lblLobbyCode.setBounds(25, 11, 184, 39);
 		panel.add(lblLobbyCode);
 		
 		JSeparator separator = new JSeparator();
@@ -55,23 +57,19 @@ public class WaitingRoomPanel extends JPanel{
 		panel.add(separator_1);
 		
 		lblCode = new JLabel("");
+		lblCode.setForeground(Color.BLACK);
 		lblCode.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblCode.setBounds(25, 70, 184, 50);
 		panel.add(lblCode);
 		
 		JButton btnReadyUp = new JButton("Ready Up");
+		btnReadyUp.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		btnReadyUp.setForeground(Color.BLACK);
 		btnReadyUp.setBackground(Color.LIGHT_GRAY);
-		btnReadyUp.setBounds(25, 226, 199, 29);
+		btnReadyUp.setBounds(25, 249, 190, 50);
 		btnReadyUp.addActionListener(wrc);
 		panel.add(btnReadyUp);
-		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setForeground(Color.BLACK);
-		btnCancel.setBackground(Color.LIGHT_GRAY);
-		btnCancel.setBounds(25, 266, 199, 29);
-		panel.add(btnCancel);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(WaitingRoomPanel.class.getResource("/offbrand_pictionary/Stick_man.png")));
@@ -80,8 +78,8 @@ public class WaitingRoomPanel extends JPanel{
 		
 		playerNames = new JTextArea();
 		playerNames.setFont(new Font("Monospaced", Font.PLAIN, 18));
-		playerNames.setBackground(Color.LIGHT_GRAY);
-		playerNames.setBounds(262, 11, 173, 344);
+		playerNames.setBackground(Color.WHITE);
+		playerNames.setBounds(251, 11, 184, 344);
 		playerNames.setText("");
 		panel.add(playerNames);
 	}

@@ -44,8 +44,8 @@ public class GuesserPanel extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBounds(20, 27, 418, 288);
-		JLabel picLabel = new JLabel(new ImageIcon(img));
-		panel_1.add(picLabel);
+		//JLabel picLabel = new JLabel(new ImageIcon(img));
+		//panel_1.add(picLabel);
 		panel.add(panel_1);
 		
 		JTextArea textArea_log = new JTextArea();

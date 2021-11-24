@@ -30,11 +30,6 @@ public class WaitingRoomControl implements ActionListener{
 	    	try { client.sendToServer("addPlayer"); }
 		    catch (IOException e) { System.out.println("Error sending data to server."); }
 	    }
-	    // If cancel button is pressed go back to welcome
-	    else if(command == "Cancel") {
-	    	CardLayout cardLayout = (CardLayout)container.getLayout();
-	    	cardLayout.show(container, "1");
-	    }
 	}
 	
 	// Set the lobby code

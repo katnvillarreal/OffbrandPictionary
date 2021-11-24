@@ -12,11 +12,8 @@ import ocsf.server.ConnectionToClient;
 public class Server extends AbstractServer {
 	// Set private data variables
 	private Database database;
-	private int lobbycode;
-	private String catChoice;
-	private String currentWord;
-	private int numPlayers;
-	private int currentPlayers;
+	private int lobbycode, currentPlayers;
+	private String catChoice, currentWord;
 	private ArrayList<String> playerNames;
 	
 	// Class Constructor
@@ -66,8 +63,7 @@ public class Server extends AbstractServer {
 			String msg = (String)arg0;
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
-				sendToAllClients(playerNames);
-				if (currentPlayers == numPlayers) {
+				if (currentPlayers == playerNames.size()) {
 					sendToAllClients("Start Game");
 				}
 			}
@@ -80,6 +76,8 @@ public class Server extends AbstractServer {
 			Object result;
 			if (database.createNewAccount(data.getUsername(), data.getPassword())) {
 				result = "CreateAccountSuccessful";
+				playerNames.add(data.getUsername());
+				sendToAllClients(playerNames);
 			}
 			else { result = "ErrorUsername"; }
 			
@@ -107,8 +105,8 @@ public class Server extends AbstractServer {
 			
 			catChoice = data.getCat();
 			lobbycode = data.getCode();
-			numPlayers = data.getPlayers();
-			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbycode, numPlayers);
+			GenLobbyData result = new GenLobbyData(database.getWord(catChoice), lobbycode);
+			sendToAllClients(playerNames);
 			
 			try { arg1.sendToClient(result); }
 			catch (IOException e) { return; }
@@ -122,6 +120,7 @@ public class Server extends AbstractServer {
 			if(data.getLobbyCode()== lobbycode) {
 				result = new JoinLobbyData(data.getNickname(), data.getLobbyCode(), "JoinSuccess");
 				playerNames.add(data.getNickname());
+				sendToAllClients(playerNames);
 			}
 			else { result = new JoinLobbyData(data.getNickname(), data.getLobbyCode(), "JoinError"); }
 			
