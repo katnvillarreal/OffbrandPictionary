@@ -66,7 +66,21 @@ public class Server extends AbstractServer {
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
 				if (currentPlayers == numPlayers) {
-					sendToAllClients("Start Game");
+					ConnectionToClient[] players = (ConnectionToClient[]) this.getClientConnections();
+					for (int i = 0; i < players.length; i++) {
+					    ConnectionToClient drawer = players[i];
+					    try { drawer.sendToClient("Drawer"); } 
+					    catch (IOException e) {	e.printStackTrace(); }
+					    // Sends "Drawer" to the client that is currently in up from the array
+					    // Puts the Drawer panel up for the currently selected drawer
+					    for (int j = i+1; j < players.length; j++) {
+					        ConnectionToClient guesser = players[j];
+					        try { guesser.sendToClient("Guesser"); } 
+					        catch (IOException e) {	e.printStackTrace(); }
+					        // Sends "Guesser" to the clients that are going to be guessing
+					        // Pulls up the guesser panel for them and writes in the current drawers name
+					    }
+					}
 				}
 				try { arg1.sendToClient("ReadiedUp"); } 
 				catch (IOException e) { e.printStackTrace(); }

@@ -65,8 +65,11 @@ public class Client extends AbstractClient {
 			else if (msg.equals("ReadiedUp")) {
 				wrc.readiedUp();
 			}
-			else if (msg.equals("Start Game")) {
-				wrc.startGame();
+			else if (msg.equals("Drawer")) {
+				wrc.startGameDraw();
+			}
+			else if (msg.equals("Guesser")) {
+				wrc.startGameGuess();
 			}
 			
 			//TODO: Add in the server sending back a string of the rankings of players

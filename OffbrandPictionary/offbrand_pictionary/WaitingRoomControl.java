@@ -63,7 +63,12 @@ public class WaitingRoomControl implements ActionListener{
 	}
 	
 	// Start the Game when everyone is ready
-	public void startGame() {
+	public void startGameDraw() {
+		DrawerPanel drawerPanel = (DrawerPanel)container.getComponent(6);
+		CardLayout cardLayout = (CardLayout)container.getLayout();
+		cardLayout.show(container, "7");
+	}
+	public void startGameGuess() {
 		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
 		guesserPanel.setError("");
 		CardLayout cardLayout = (CardLayout)container.getLayout();
