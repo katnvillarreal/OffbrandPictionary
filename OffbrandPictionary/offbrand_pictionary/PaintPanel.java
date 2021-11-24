@@ -14,6 +14,7 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
     private Color color = Color.BLACK;;
     private Point end = null;
 	private int n = 5;
+	private boolean clear = false;
 	
     private BufferedImage bufImage = null;
     
@@ -38,10 +39,8 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
     }
     
     public void setBack() {
-    	Graphics g = bufImage.getGraphics();
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setColor(Color.WHITE);
-		repaint();
+    	clear = true;
+    	repaint();
     }
     
     @Override public void paintComponent(Graphics g) {
@@ -54,6 +53,15 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
             Graphics2D gc = bufImage.createGraphics();
             gc.setColor(Color.WHITE);
             gc.fillRect(0, 0, w, h);
+        }
+        else if (clear == true) {
+        	int w = this.getWidth();
+            int h = this.getHeight();
+            bufImage = (BufferedImage)this.createImage(w, h);
+            Graphics2D gc = bufImage.createGraphics();
+            gc.setColor(Color.WHITE);
+            gc.fillRect(0, 0, w, h);
+            clear = false;
         }
         
         g2.drawImage(bufImage, null, 0, 0); 

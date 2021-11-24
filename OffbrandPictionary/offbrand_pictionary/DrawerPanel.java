@@ -69,10 +69,6 @@ public class DrawerPanel extends JPanel{
 		btnBlue.addActionListener(dc);
 		panel.add(btnBlue);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(459, 171, 116, 128);
-		panel.add(textArea);
-		
 		JLabel lblYourWord = new JLabel("Your Word:");
 		lblYourWord.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblYourWord.setBounds(459, 27, 116, 25);
