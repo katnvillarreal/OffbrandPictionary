@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class GuessControl implements ActionListener{
@@ -37,7 +39,10 @@ public class GuessControl implements ActionListener{
 	}
 	
 	// Set the image gotten from the server to the image on the guesser panel
-	public void setImage(BufferedImage img) { this.img = img; }
+	public void setImage(ImageIcon img) { 
+		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
+		guesserPanel.setImage(img);
+	}
 	
 	// When the correct word is guessed alert the player and make the textbox uneditable
 	public void correctWord() {

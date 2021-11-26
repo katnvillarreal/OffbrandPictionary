@@ -31,6 +31,7 @@ public class PlayerGUI extends JFrame {
 	    GuessControl gc = new GuessControl(container, client);
 	    WinningControl winc = new WinningControl(container);
 		
+	    canvas.setDrawControl(dc);
 		client.setLoginControl(lc);
 		client.setDrawerControl(dc);
 		client.setGuessControl(gc);

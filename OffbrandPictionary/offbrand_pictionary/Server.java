@@ -5,6 +5,9 @@ package offbrand_pictionary;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
@@ -15,6 +18,10 @@ public class Server extends AbstractServer {
 	private int lobbycode, currentPlayers, numPlayers;
 	private String catChoice, currentWord;
 	private ArrayList<String> playerNames;
+	private Random rng = new Random();
+	private int numRounds = 3;
+	private int turns = 0;
+	private int currentRound = 1;
 	
 	// Class Constructor
 	public Server() {
@@ -53,12 +60,10 @@ public class Server extends AbstractServer {
 		// When getting an image from the drawer panel
 		System.out.println("Message received from Client");
 		// Get Image from the Drawer Panel
-		if (arg0 instanceof BufferedImage) {
-			System.out.println("Buffered Image received");
-			BufferedImage img = (BufferedImage)arg0;
-			
-			try {arg1.sendToClient(img); }
-			catch (IOException e) { e.printStackTrace(); }
+		if (arg0 instanceof ImageIcon) {
+			System.out.println("Image received");
+			ImageIcon img = (ImageIcon)arg0;
+			sendToAllClients(img);
 		}
 		// Received a string from the client
 		else if (arg0 instanceof String) {
@@ -66,33 +71,30 @@ public class Server extends AbstractServer {
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
 				if (currentPlayers == numPlayers) {
+					// Initiates first turn
 					Thread[] players = this.getClientConnections();
-					for(int round = 0; round < 3; round++) {
-						for (int i = 0; i < players.length; i++) {
-							currentWord = database.getWord(catChoice);
-							Thread drawer = players[i];
-							DrawerData data = new DrawerData(currentWord);
-							try { ((ConnectionToClient) drawer).sendToClient(data); } 
+					int i = rng.nextInt(numPlayers);
+					currentWord = database.getWord(catChoice);
+					turns++;
+					Thread drawer = players[i];
+					DrawerData data = new DrawerData(currentWord);
+					
+					try { ((ConnectionToClient) drawer).sendToClient(data); } 
+					catch (IOException e) {	e.printStackTrace(); }
+						// Sends "Drawer" to the client that is currently in up from the array
+						// Puts the Drawer panel up for the currently selected drawer
+					for (int j = 0; j < players.length; j++) {
+						if (j != i) {
+							Thread guesser = players[j];
+							try { 
+								((ConnectionToClient) guesser).sendToClient("Guesser"); } 
 							catch (IOException e) {	e.printStackTrace(); }
-							// Sends "Drawer" to the client that is currently in up from the array
-							// Puts the Drawer panel up for the currently selected drawer
-							for (int j = 0; j < players.length; j++) {
-								if (j != i) {
-									Thread guesser = players[j];
-									try { ((ConnectionToClient) guesser).sendToClient("Guesser"); } 
-									catch (IOException e) {	e.printStackTrace(); }
-									// Sends "Guesser" to the clients that are going to be guessing
-									// Pulls up the guesser panel for them and writes in the current drawers name
-								}
-							}
-							try {
-								Thread.sleep(7000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+								// Sends "Guesser" to the clients that are going to be guessing
+								// Pulls up the guesser panel for them and writes in the current drawers name
 						}
 					}
+					
+					// start a timer for a minute and at the end of it do the Turns function?
 				}
 				try { arg1.sendToClient("ReadiedUp"); } 
 				catch (IOException e) { e.printStackTrace(); }
@@ -201,5 +203,38 @@ public class Server extends AbstractServer {
 	// Alert when connection is established
 	public void connectionEstablished() {
 		System.out.println("Client Connected");
+	}
+	
+	public void turn() {
+		// Other turns
+		Thread[] players = this.getClientConnections();
+		int i = rng.nextInt(numPlayers);
+		currentWord = database.getWord(catChoice);
+		Thread drawer = players[i];
+		DrawerData data = new DrawerData(currentWord);
+		
+		try { ((ConnectionToClient) drawer).sendToClient(data); } 
+		catch (IOException e) {	e.printStackTrace(); }
+			// Sends "Drawer" to the client that is currently in up from the array
+			// Puts the Drawer panel up for the currently selected drawer
+		for (int j = 0; j < players.length; j++) {
+			if (j != i) {
+				Thread guesser = players[j];
+				try { 
+					((ConnectionToClient) guesser).sendToClient("Guesser"); } 
+				catch (IOException e) {	e.printStackTrace(); }
+					// Sends "Guesser" to the clients that are going to be guessing
+					// Pulls up the guesser panel for them and writes in the current drawers name
+			}
+		}
+		
+		turns++;
+		if (turns == numPlayers) {
+			currentRound++;
+		}
+		
+		if (currentRound == numRounds) {
+			// send to client to do winning panel
+		}
 	}
 }

@@ -3,6 +3,8 @@ package offbrand_pictionary;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import ocsf.client.AbstractClient;
 
 public class Client extends AbstractClient {
@@ -67,14 +69,15 @@ public class Client extends AbstractClient {
 			}
 			else if (msg.equals("Guesser")) {
 				wrc.startGameGuess();
+				gc.setImage(null);
 			}
 			
 			//TODO: Add in the server sending back a string of the rankings of players
 			// to the winning control
 		}
 		// Getting an image from Drawer
-		else if (arg0 instanceof BufferedImage) {
-			BufferedImage img = (BufferedImage)arg0;
+		else if (arg0 instanceof ImageIcon) {
+			ImageIcon img = (ImageIcon)arg0;
 			gc.setImage(img);
 		}
 		// GenLobby

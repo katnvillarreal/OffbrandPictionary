@@ -4,13 +4,14 @@ import java.awt.Color;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class DrawerControl implements ActionListener{
 	// Private Data Members
 	private JPanel container;
 	private Client client;
-	private BufferedImage img;
 	private PaintPanel canvas;
 	
 	// Constructor
@@ -22,14 +23,9 @@ public class DrawerControl implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 		String command = ae.getActionCommand();
-
-		if (command == "image") {
-			img = (BufferedImage) ae.getSource();
-			try { client.sendToServer(img); }
-		    catch (IOException e) { }
-		}
+		
 		// If the buttons are pressed
-		else if (command == "Size ++") { canvas.setSize(1); }
+		if (command == "Size ++") { canvas.setSize(1); }
 		else if (command == "Size --") { canvas.setSize(0); }
 		else if (command == "Black") { canvas.setColor(Color.BLACK); }
 		else if (command == "Red") { canvas.setColor(Color.RED); }
@@ -47,4 +43,11 @@ public class DrawerControl implements ActionListener{
 		DrawerPanel drawPanel = (DrawerPanel)container.getComponent(6);
 		drawPanel.setCanvas();
 	}
+	
+	public void sendImage(BufferedImage img) {
+		try { client.sendToServer(new ImageIcon(img)); }
+	    catch (IOException e) { e.printStackTrace();}
+	}
+	
+	
 }

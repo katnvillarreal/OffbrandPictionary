@@ -2,6 +2,7 @@ package offbrand_pictionary;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,7 +16,7 @@ public class GuesserPanel extends JPanel {
 	private JTextField textField_Guess;
 	private JLabel lblError;
 	private JLabel lblSetDrawer;
-	private BufferedImage img;
+	private JLabel picLabel;
 	
 	// Getters
 	public String getWord() { return textField_Guess.getText(); }
@@ -25,7 +26,14 @@ public class GuesserPanel extends JPanel {
 	public void setWord(String word) { textField_Guess.setText(word); }
 	public void setDrawer(String drawer) { lblSetDrawer.setText(drawer);}
 	public void setError(String error) { lblError.setText(error); }
-	public void setImage(BufferedImage img) { this.img = img; }
+	public void setImage(ImageIcon img) {
+		if (img != null) {
+			picLabel.setIcon(img);
+		}
+		else {
+			picLabel.setIcon(null);
+		}
+	}
 	
 	// When correctly guessing make the textfield uneditable
 	public void correctGuess() { textField_Guess.setEditable(false); }
@@ -44,8 +52,8 @@ public class GuesserPanel extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBounds(20, 27, 418, 288);
-		//JLabel picLabel = new JLabel(new ImageIcon(img));
-		//panel_1.add(picLabel);
+		picLabel = new JLabel();
+		panel_1.add(picLabel);
 		panel.add(panel_1);
 		
 		JTextArea textArea_log = new JTextArea();

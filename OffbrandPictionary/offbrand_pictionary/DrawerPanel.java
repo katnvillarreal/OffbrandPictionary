@@ -13,7 +13,6 @@ import javax.swing.JProgressBar;
 public class DrawerPanel extends JPanel{
 	// Private Data Members
 	private JLabel lblWord;
-	private BufferedImage img;
 	private PaintPanel color;
 	
 	// Getters
