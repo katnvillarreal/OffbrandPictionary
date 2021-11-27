@@ -71,7 +71,6 @@ public class GuesserPanel extends JPanel {
 		panel.add(progressBar);
 		
 		textField_Guess = new JTextField();
-		textField_Guess.setEditable(true);
 		textField_Guess.setBounds(448, 296, 157, 19);
 		textField_Guess.setEditable(true);
 		panel.add(textField_Guess);

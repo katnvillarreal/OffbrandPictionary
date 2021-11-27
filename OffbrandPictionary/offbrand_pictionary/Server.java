@@ -198,6 +198,7 @@ public class Server extends AbstractServer {
 				if(correctGuesses == numPlayers-1) {
 					if (currentRound != 3) {
 						turn();
+						return;
 					}
 					else {
 						String results = "";
@@ -271,10 +272,13 @@ public class Server extends AbstractServer {
 		
 		turns++;
 		correctGuesses = 0;
-		if (turns == numPlayers) { currentRound++; }
-		
-		if (currentRound == numRounds) {
-			// send to client to do winning panel
+		if (turns == numPlayers) { 
+			currentRound++;
+			turns = 0;
 		}
+//		
+//		if (currentRound == numRounds) {
+//			// send to client to do winning panel
+//		}
 	}
 }
