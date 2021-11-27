@@ -75,6 +75,8 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
     	end = new Point(e.getX(), e.getY());
     }
     
+    public void mouseReleased(MouseEvent e) {dc.sendImage(bufImage);}
+    
     public void mouseDragged(MouseEvent e) {
     	Graphics g = bufImage.getGraphics();
 		Graphics2D g2 = (Graphics2D) g;
@@ -82,12 +84,10 @@ class PaintPanel extends JPanel implements MouseListener, MouseMotionListener {
 		g.setColor(color);
 		g2.drawLine(e.getX(), e.getY(), e.getX(), e.getY());
 		repaint();
-    	dc.sendImage(bufImage);
     }
     
     public void mouseMoved  (MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited (MouseEvent e) {}
     public void mouseClicked(MouseEvent e) {}
-	public void mouseReleased(MouseEvent e) {}
 }

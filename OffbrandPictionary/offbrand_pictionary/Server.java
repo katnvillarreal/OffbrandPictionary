@@ -2,11 +2,12 @@
 
 package offbrand_pictionary;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
 
@@ -102,8 +103,6 @@ public class Server extends AbstractServer {
 								// Pulls up the guesser panel for them and writes in the current drawers name
 						}
 					}
-					
-					// start a timer for a minute and at the end of it do the Turns function?
 				}
 				try { arg1.sendToClient("ReadiedUp"); } 
 				catch (IOException e) { e.printStackTrace(); }
@@ -272,9 +271,7 @@ public class Server extends AbstractServer {
 		
 		turns++;
 		correctGuesses = 0;
-		if (turns == numPlayers) {
-			currentRound++;
-		}
+		if (turns == numPlayers) { currentRound++; }
 		
 		if (currentRound == numRounds) {
 			// send to client to do winning panel
