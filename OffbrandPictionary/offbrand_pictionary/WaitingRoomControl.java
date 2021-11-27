@@ -74,6 +74,7 @@ public class WaitingRoomControl implements ActionListener{
 		System.out.println("I'm the guesser");
 		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
 		guesserPanel.setError("");
+		guesserPanel.setEdit();
 		CardLayout cardLayout = (CardLayout)container.getLayout();
 		cardLayout.show(container, "8");
 	}

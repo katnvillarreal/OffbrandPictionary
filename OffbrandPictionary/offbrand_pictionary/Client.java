@@ -71,9 +71,6 @@ public class Client extends AbstractClient {
 				wrc.startGameGuess();
 				gc.setImage(null);
 			}
-			
-			//TODO: Add in the server sending back a string of the rankings of players
-			// to the winning control
 		}
 		// Getting an image from Drawer
 		else if (arg0 instanceof ImageIcon) {
@@ -106,6 +103,10 @@ public class Client extends AbstractClient {
 			DrawerData data = (DrawerData)arg0;
 			wrc.startGameDraw(data.getWord());
 			dc.setBackground();
+		}
+		else if (arg0 instanceof WinningData) {
+			WinningData data = (WinningData)arg0;
+			winc.setRanking(data.getResults());
 		}
 	}
 }

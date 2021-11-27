@@ -5,6 +5,7 @@ package offbrand_pictionary;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -22,6 +23,8 @@ public class Server extends AbstractServer {
 	private int numRounds = 3;
 	private int turns = 0;
 	private int currentRound = 1;
+	private int correctGuesses = 0;
+	private HashMap<String, Integer> playerPoints;
 	
 	// Class Constructor
 	public Server() {
@@ -71,6 +74,12 @@ public class Server extends AbstractServer {
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
 				if (currentPlayers == numPlayers) {
+					// Populate Hashmap with players and starting points at zero
+					playerPoints = new HashMap<String, Integer>();
+					for (int k = 0; k < numPlayers; k++) {
+						playerPoints.put(playerNames.get(k), 0);
+					}
+					
 					// Initiates first turn
 					Thread[] players = this.getClientConnections();
 					int i = rng.nextInt(numPlayers);
@@ -179,6 +188,39 @@ public class Server extends AbstractServer {
 			Object result;
 			if(data.getWord().equals(currentWord)) {
 				result = "CorrectWord";
+				// Update player points
+				int points = (numPlayers - 1) -correctGuesses;
+				String player = arg1.getName();
+				int curPoints = playerPoints.get(player) + points;
+				playerPoints.put(player, curPoints);
+				
+				// Update guesses
+				correctGuesses++;
+				if(correctGuesses == numPlayers-1) {
+					if (currentRound != 3) {
+						turn();
+					}
+					else {
+						String results = "";
+						// Order the players from most to least points
+						// Get the highest point value
+						// Add to string
+						// Remove from hashmap
+						for(int k = 0; k < numPlayers; k++) {
+							int max = 0;
+							String name = "";
+							for(String n : playerPoints.keySet()) {
+								if(max < playerPoints.get(n)) {
+									max = playerPoints.get(n);
+									name = n;
+								}
+							}
+							results += k + ". " + name + "......" + max + "\n";
+						}
+						result = new WinningData(results);
+						sendToAllClients(results);
+					}
+				}
 			}
 			else { result = "IncorrectWord"; }
 			try { arg1.sendToClient(result); }
@@ -229,6 +271,7 @@ public class Server extends AbstractServer {
 		}
 		
 		turns++;
+		correctGuesses = 0;
 		if (turns == numPlayers) {
 			currentRound++;
 		}

@@ -26,6 +26,7 @@ public class GuesserPanel extends JPanel {
 	public void setWord(String word) { textField_Guess.setText(word); }
 	public void setDrawer(String drawer) { lblSetDrawer.setText(drawer);}
 	public void setError(String error) { lblError.setText(error); }
+	public void setEdit() {textField_Guess.setEditable(true);}
 	public void setImage(ImageIcon img) {
 		if (img != null) {
 			picLabel.setIcon(img);
@@ -70,6 +71,7 @@ public class GuesserPanel extends JPanel {
 		panel.add(progressBar);
 		
 		textField_Guess = new JTextField();
+		textField_Guess.setEditable(true);
 		textField_Guess.setBounds(448, 296, 157, 19);
 		textField_Guess.setEditable(true);
 		panel.add(textField_Guess);

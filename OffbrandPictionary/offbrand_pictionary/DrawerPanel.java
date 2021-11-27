@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
 
 public class DrawerPanel extends JPanel{
 	// Private Data Members
@@ -39,33 +40,37 @@ public class DrawerPanel extends JPanel{
 		panel.add(panel_1);
 		
 		JButton btnSizeUp = new JButton("Size ++");
-		btnSizeUp.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnSizeUp.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnSizeUp.setBounds(20, 325, 67, 21);
 		btnSizeUp.addActionListener(dc);
 		panel.add(btnSizeUp);
 		
 		JButton btnSizeDown = new JButton("Size --");
+		btnSizeDown.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnSizeDown.setBounds(90, 325, 67, 21);
 		btnSizeDown.addActionListener(dc);
 		panel.add(btnSizeDown);
 		
 		JButton btnBlack = new JButton("Black");
+		btnBlack.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnBlack.setBounds(160, 325, 67, 21);
 		btnBlack.addActionListener(dc);
 		panel.add(btnBlack);
 		
 		JButton btnRed = new JButton("Red");
+		btnRed.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnRed.setBounds(237, 325, 60, 21);
 		btnRed.addActionListener(dc);
 		panel.add(btnRed);
 		
 		JButton btnGreen = new JButton("Green");
-		btnGreen.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnGreen.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnGreen.setBounds(307, 325, 60, 21);
 		btnGreen.addActionListener(dc);
 		panel.add(btnGreen);
 		
 		JButton btnBlue = new JButton("Blue");
+		btnBlue.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		btnBlue.setBounds(377, 325, 60, 21);
 		btnBlue.addActionListener(dc);
 		panel.add(btnBlue);
@@ -80,7 +85,9 @@ public class DrawerPanel extends JPanel{
 		panel.add(separator);
 		
 		lblWord = new JLabel("");
-		lblWord.setBounds(459, 73, 88, 13);
+		lblWord.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWord.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblWord.setBounds(459, 73, 126, 25);
 		panel.add(lblWord);
 		
 		JProgressBar progressBar = new JProgressBar();

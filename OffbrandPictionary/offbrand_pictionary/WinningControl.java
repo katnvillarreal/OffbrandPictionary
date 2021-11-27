@@ -31,5 +31,7 @@ public class WinningControl implements ActionListener{
 	public void setRanking(String str) {
 		WinningPanel winningPanel = (WinningPanel)container.getComponent(8);
 		winningPanel.setRanking(str);
+		CardLayout cardLayout = (CardLayout)container.getLayout();
+		cardLayout.show(container, "9");
 	}
 }
