@@ -196,7 +196,7 @@ public class Server extends AbstractServer {
 				// Update guesses
 				correctGuesses++;
 				if(correctGuesses == numPlayers-1) {
-					if (currentRound != 3) {
+					if (currentRound != 2) {
 						turn();
 						return;
 					}
@@ -207,7 +207,7 @@ public class Server extends AbstractServer {
 						// Add to string
 						// Remove from hashmap
 						for(int k = 0; k < numPlayers; k++) {
-							int max = 0;
+							int max = -1;
 							String name = "";
 							for(String n : playerPoints.keySet()) {
 								if(max < playerPoints.get(n)) {
@@ -216,9 +216,11 @@ public class Server extends AbstractServer {
 								}
 							}
 							results += k + ". " + name + "......" + max + "\n";
+							playerPoints.remove(name);
 						}
 						result = new WinningData(results);
-						sendToAllClients(results);
+						sendToAllClients(result);
+						return;
 					}
 				}
 			}

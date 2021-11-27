@@ -39,6 +39,7 @@ public class PlayerGUI extends JFrame {
 		client.setGenControl(glc);
 		client.setJoinLobbyControl(jlc);
 		client.setWaitControl(wrc);
+		client.setWinningControl(winc);
 		
 		JPanel view1 = new WelcomePanel(wc);
 		JPanel view2 = new LoginPanel(lc);

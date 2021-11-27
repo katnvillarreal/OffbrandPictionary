@@ -105,6 +105,7 @@ public class Client extends AbstractClient {
 			dc.setBackground();
 		}
 		else if (arg0 instanceof WinningData) {
+			System.out.println("WinningData got!");
 			WinningData data = (WinningData)arg0;
 			winc.setRanking(data.getResults());
 		}
