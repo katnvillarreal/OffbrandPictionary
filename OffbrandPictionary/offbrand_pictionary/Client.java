@@ -69,6 +69,9 @@ public class Client extends AbstractClient {
 				wrc.startGameGuess();
 				gc.setImage(null);
 			}
+			else if (msg.equals("ClearReady")) {
+				wrc.clear();
+			}
 		}
 		// Getting an image from Drawer
 		else if (arg0 instanceof ImageIcon) {

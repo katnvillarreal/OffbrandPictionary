@@ -29,7 +29,7 @@ public class PlayerGUI extends JFrame {
 	    WaitingRoomControl wrc = new WaitingRoomControl(container, client);
 	    DrawerControl dc = new DrawerControl(container, client, canvas);
 	    GuessControl gc = new GuessControl(container, client);
-	    WinningControl winc = new WinningControl(container);
+	    WinningControl winc = new WinningControl(container, client);
 		
 	    canvas.setDrawControl(dc);
 		client.setLoginControl(lc);

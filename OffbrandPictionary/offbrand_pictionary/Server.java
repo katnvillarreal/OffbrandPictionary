@@ -116,6 +116,16 @@ public class Server extends AbstractServer {
 				currentPlayers--;
 				sendToAllClients(playerNames);
 			}
+			else if (msg.equals("Reset")) {
+				lobbycode = 0;
+				currentPlayers = 0;
+				playerNames.clear();
+				turns = 0;
+				currentRound = 1;
+				correctGuesses = 0;
+				playerPoints.clear();
+				sendToAllClients("ClearReady");
+			}
 		}
 		// When getting a CreateAccountData object
 		else if (arg0 instanceof CreateAccountData) {
