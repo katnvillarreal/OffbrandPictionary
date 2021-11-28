@@ -33,7 +33,6 @@ public class Client extends AbstractClient {
 	
 	public void setName(String name) {
 		this.name = name;
-		System.out.println("My name is " + name);
 	}
 	
 	public String getName() {
@@ -127,6 +126,7 @@ public class Client extends AbstractClient {
 			gc.appendLog(data.getGuesser() + ": " +data.getWord());
 		}
 		else if (arg0 instanceof WinningData) {
+			gc.clearLog();
 			WinningData data = (WinningData)arg0;
 			winc.setRanking(data.getResults());
 		}

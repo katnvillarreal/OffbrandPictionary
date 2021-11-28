@@ -57,6 +57,11 @@ public class GuessControl implements ActionListener{
 		guesserPanel.appendLog(str);
 	}
 	
+	public void clearLog() {
+		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
+		guesserPanel.clearLog();
+	}
+	
 	// Display an error on the panel when incorrectly guessed
 	public void displayError(String error) {
 		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);

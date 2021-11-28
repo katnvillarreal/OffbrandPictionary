@@ -227,7 +227,7 @@ public class Server extends AbstractServer {
 									name = n;
 								}
 							}
-							results += k + ". " + name + "......" + max + "\n";
+							results += (k+1) + ". " + name + "......" + max + "\n";
 							playerPoints.remove(name);
 						}
 						result = new WinningData(results);

@@ -9,8 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.DefaultCaret;
 
 public class GuesserPanel extends JPanel {
 	private JTextField textField_Guess;
@@ -26,6 +28,7 @@ public class GuesserPanel extends JPanel {
 	public void setError(String error) { lblError.setText(error); }
 	public void setEdit() {textField_Guess.setEditable(true);}
 	public void appendLog(String str) { textArea_log.append(str + "\n"); }
+	public void clearLog() { textArea_log.setText("");}
 	public void setImage(ImageIcon img) {
 		if (img != null) {
 			picLabel.setIcon(img);
@@ -59,7 +62,12 @@ public class GuesserPanel extends JPanel {
 		textArea_log = new JTextArea();
 		textArea_log.setEditable(false);
 		textArea_log.setBounds(448, 32, 157, 261);
-		panel.add(textArea_log);
+		DefaultCaret caret = (DefaultCaret)textArea_log.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		JScrollPane scroll = new JScrollPane(textArea_log, 
+				   JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setBounds(448, 32, 157, 261);
+		panel.add(scroll);
 		
 		JLabel lblWord = new JLabel("");
 		lblWord.setBounds(459, 73, 88, 13);
