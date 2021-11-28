@@ -62,6 +62,11 @@ public class WaitingRoomControl implements ActionListener{
 		waitingRoomPanel.setReady("You've Readied!");
 	}
 	
+	public void clear() {
+		WaitingRoomPanel waitingRoomPanel = (WaitingRoomPanel)container.getComponent(5);
+		waitingRoomPanel.setReady("");
+	}
+	
 	// Start the Game when everyone is ready
 	public void startGameDraw(String word) {
 		System.out.println("I'm the drawer");

@@ -30,7 +30,7 @@ public class DrawerControl implements ActionListener{
 		else if (command == "Black") { canvas.setColor(Color.BLACK); }
 		else if (command == "Red") { canvas.setColor(Color.RED); }
 		else if (command == "Green") { canvas.setColor(Color.GREEN); }
-		else if (command == "Blue") { canvas.setColor(Color.BLUE); }
+		else if (command == "Eraser") { canvas.setColor(Color.WHITE); }
 	}
 	
 	// Set the word for the drawer

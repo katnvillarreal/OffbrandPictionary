@@ -41,37 +41,37 @@ public class DrawerPanel extends JPanel{
 		
 		JButton btnSizeUp = new JButton("Size ++");
 		btnSizeUp.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnSizeUp.setBounds(20, 325, 67, 21);
+		btnSizeUp.setBounds(20, 325, 70, 31);
 		btnSizeUp.addActionListener(dc);
 		panel.add(btnSizeUp);
 		
 		JButton btnSizeDown = new JButton("Size --");
 		btnSizeDown.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnSizeDown.setBounds(90, 325, 67, 21);
+		btnSizeDown.setBounds(92, 325, 67, 31);
 		btnSizeDown.addActionListener(dc);
 		panel.add(btnSizeDown);
 		
 		JButton btnBlack = new JButton("Black");
 		btnBlack.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnBlack.setBounds(160, 325, 67, 21);
+		btnBlack.setBounds(161, 325, 67, 31);
 		btnBlack.addActionListener(dc);
 		panel.add(btnBlack);
 		
 		JButton btnRed = new JButton("Red");
 		btnRed.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnRed.setBounds(237, 325, 60, 21);
+		btnRed.setBounds(231, 325, 67, 31);
 		btnRed.addActionListener(dc);
 		panel.add(btnRed);
 		
 		JButton btnGreen = new JButton("Green");
 		btnGreen.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnGreen.setBounds(307, 325, 60, 21);
+		btnGreen.setBounds(301, 325, 67, 31);
 		btnGreen.addActionListener(dc);
 		panel.add(btnGreen);
 		
-		JButton btnBlue = new JButton("Blue");
+		JButton btnBlue = new JButton("Eraser");
 		btnBlue.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		btnBlue.setBounds(377, 325, 60, 21);
+		btnBlue.setBounds(371, 325, 67, 31);
 		btnBlue.addActionListener(dc);
 		panel.add(btnBlue);
 		

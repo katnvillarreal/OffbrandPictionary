@@ -2,9 +2,7 @@ package offbrand_pictionary;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
 import ocsf.client.AbstractClient;
 
 public class Client extends AbstractClient {
@@ -73,6 +71,9 @@ public class Client extends AbstractClient {
 				wrc.startGameGuess();
 				gc.setImage(null);
 				isDrawer = false;
+			}
+			else if (msg.equals("ClearReady")) {
+				wrc.clear();
 			}
 		}
 		// Getting an image from Drawer

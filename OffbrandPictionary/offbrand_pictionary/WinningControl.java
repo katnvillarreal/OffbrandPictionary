@@ -3,6 +3,7 @@ package offbrand_pictionary;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -10,9 +11,10 @@ public class WinningControl implements ActionListener{
 	
 	// Private data members
 	private JPanel container;
+	private Client client;
 
 	// Constructor
-	public WinningControl (JPanel container) { this.container = container; }
+	public WinningControl (JPanel container, Client client) { this.container = container; this.client = client;}
 
 	public void actionPerformed(ActionEvent e) {
 		String action = e.getActionCommand();
@@ -21,6 +23,8 @@ public class WinningControl implements ActionListener{
 		if (action.equals("Back to Start")) {
 			CardLayout cardLayout = (CardLayout)container.getLayout();
 			cardLayout.show(container,  "1");
+			try { client.sendToServer("Reset"); }
+			catch (IOException e1) { e1.printStackTrace(); }
 		}
 		// When Create Account is pressed go to CreateAccountPanel
 		else if (action.equals("Exit")) {
