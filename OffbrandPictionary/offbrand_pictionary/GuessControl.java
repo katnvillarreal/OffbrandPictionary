@@ -26,7 +26,7 @@ public class GuessControl implements ActionListener{
 		// When guess button is pressed
 		if (command == "Guess") {
 			GuesserPanel guessPanel = (GuesserPanel)container.getComponent(7);
-		    GuesserData data = new GuesserData(guessPanel.getWord(), guessPanel.getDrawer());
+		    GuesserData data = new GuesserData(guessPanel.getWord(), client.getName());
 			
 		    // if empty don't send anything to the server
 			if (data.getWord().equals("")) { return; }
@@ -49,6 +49,12 @@ public class GuessControl implements ActionListener{
 		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
 		guesserPanel.setError("YOU GUESSED CORRECTLY");
 		guesserPanel.correctGuess();
+	}
+	
+	// When anyone guesses add a word to the log
+	public void appendLog(String str) {
+		GuesserPanel guesserPanel = (GuesserPanel)container.getComponent(7);
+		guesserPanel.appendLog(str);
 	}
 	
 	// Display an error on the panel when incorrectly guessed

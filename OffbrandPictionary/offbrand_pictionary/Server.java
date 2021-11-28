@@ -124,7 +124,8 @@ public class Server extends AbstractServer {
 			
 			Object result;
 			if (database.createNewAccount(data.getUsername(), data.getPassword())) {
-				result = "CreateAccountSuccessful";
+//				result = "CreateAccountSuccessful";
+				result = data;
 				playerNames.add(data.getUsername());
 				arg1.setName(data.getUsername());
 			}
@@ -139,7 +140,8 @@ public class Server extends AbstractServer {
 			LoginData data = (LoginData)arg0;
 			Object result;
 			if(database.verifyAccount(data.getUsername(), data.getPassword())) {
-				result = "LoginSuccessful";
+//				result = "LoginSuccessful";
+				result = data;
 				playerNames.add(data.getUsername());
 				arg1.setName(data.getUsername());
 			}
@@ -182,9 +184,9 @@ public class Server extends AbstractServer {
 		}
 		// When getting a GuesserData Object
 		else if (arg0 instanceof GuesserData) {
-			System.out.println("GuesserData received");
 			GuesserData data = (GuesserData)arg0;
 			Object result;
+			sendToAllClients(data);
 			if(data.getWord().equals(currentWord)) {
 				result = "CorrectWord";
 				// Update player points

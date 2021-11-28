@@ -18,6 +18,7 @@ public class Client extends AbstractClient {
 	private JoinLobbyControl jlc;
 	private WinningControl winc;
 	private String name;
+	private boolean isDrawer;
 	
 	// Constructor
 	public Client() { super("localhost",8300); }
@@ -34,6 +35,7 @@ public class Client extends AbstractClient {
 	
 	public void setName(String name) {
 		this.name = name;
+		System.out.println("My name is " + name);
 	}
 	
 	public String getName() {
@@ -70,6 +72,7 @@ public class Client extends AbstractClient {
 			else if (msg.equals("Guesser")) {
 				wrc.startGameGuess();
 				gc.setImage(null);
+				isDrawer = false;
 			}
 		}
 		// Getting an image from Drawer
@@ -84,11 +87,24 @@ public class Client extends AbstractClient {
 			dc.setWord(data.getCat());
 			glc.success();
 		}
+		// Login
+		else if (arg0 instanceof LoginData) {
+			LoginData data = (LoginData)arg0;
+			setName(data.getUsername());
+			lc.loginSuccess();
+		}
+		// Create Account
+		else if (arg0 instanceof CreateAccountData) {
+			CreateAccountData data = (CreateAccountData)arg0;
+			setName(data.getUsername());
+			lc.loginSuccess();
+		}
 		// JoinLobby
 		else if (arg0 instanceof JoinLobbyData) {
 			JoinLobbyData data = (JoinLobbyData)arg0;
 			
 			if (data.getMsg().equals("JoinSuccess")) {
+				setName(data.getNickname());
 				wrc.setLobbyCode(Integer.toString(data.getLobbyCode()));
 				jlc.JoinLobbySuccess();
 			}
@@ -103,9 +119,13 @@ public class Client extends AbstractClient {
 			DrawerData data = (DrawerData)arg0;
 			wrc.startGameDraw(data.getWord());
 			dc.setBackground();
+			isDrawer = true;
+		}
+		else if (arg0 instanceof GuesserData) {
+			GuesserData data = (GuesserData)arg0;
+			gc.appendLog(data.getGuesser() + ": " +data.getWord());
 		}
 		else if (arg0 instanceof WinningData) {
-			System.out.println("WinningData got!");
 			WinningData data = (WinningData)arg0;
 			winc.setRanking(data.getResults());
 		}

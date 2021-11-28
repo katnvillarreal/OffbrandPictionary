@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class GuesserData implements Serializable{
 	private String word;
-	private String drawer;
+	private String guesser;
 	
 	// Getters
 	public String getWord() { return word; }
-	public String getDrawer() { return drawer; }
+	public String getGuesser() { return guesser; }
 	
 	// Setters
 	public void setWord(String word) { this.word = word; }
-	public void setDrawer(String drawer) { this.drawer = drawer; }
+	public void setGuesser(String guesser) { this.guesser = guesser; }
 	
 	// Constructor
-	public GuesserData(String word, String drawer) {
+	public GuesserData(String word, String guesser) {
 		setWord(word);
-		setDrawer(drawer);
+		setGuesser(guesser);
 	}
 }

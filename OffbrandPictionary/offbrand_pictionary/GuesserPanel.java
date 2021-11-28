@@ -15,18 +15,17 @@ import javax.swing.JTextField;
 public class GuesserPanel extends JPanel {
 	private JTextField textField_Guess;
 	private JLabel lblError;
-	private JLabel lblSetDrawer;
 	private JLabel picLabel;
+	private JTextArea textArea_log;
 	
 	// Getters
 	public String getWord() { return textField_Guess.getText(); }
-	public String getDrawer() { return lblSetDrawer.getText(); }
 	
 	// Setters
 	public void setWord(String word) { textField_Guess.setText(word); }
-	public void setDrawer(String drawer) { lblSetDrawer.setText(drawer);}
 	public void setError(String error) { lblError.setText(error); }
 	public void setEdit() {textField_Guess.setEditable(true);}
+	public void appendLog(String str) { textArea_log.append(str + "\n"); }
 	public void setImage(ImageIcon img) {
 		if (img != null) {
 			picLabel.setIcon(img);
@@ -57,7 +56,7 @@ public class GuesserPanel extends JPanel {
 		panel_1.add(picLabel);
 		panel.add(panel_1);
 		
-		JTextArea textArea_log = new JTextArea();
+		textArea_log = new JTextArea();
 		textArea_log.setEditable(false);
 		textArea_log.setBounds(448, 32, 157, 261);
 		panel.add(textArea_log);
@@ -65,10 +64,6 @@ public class GuesserPanel extends JPanel {
 		JLabel lblWord = new JLabel("");
 		lblWord.setBounds(459, 73, 88, 13);
 		panel.add(lblWord);
-		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(20, 6, 418, 11);
-		panel.add(progressBar);
 		
 		textField_Guess = new JTextField();
 		textField_Guess.setBounds(448, 296, 157, 19);
@@ -79,15 +74,6 @@ public class GuesserPanel extends JPanel {
 		lblError = new JLabel("");
 		lblError.setBounds(448, 357, 157, 18);
 		panel.add(lblError);
-		
-		JLabel lblDrawer = new JLabel("Drawer:");
-		lblDrawer.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDrawer.setBounds(448, 9, 73, 13);
-		panel.add(lblDrawer);
-		
-		lblSetDrawer = new JLabel("");
-		lblSetDrawer.setBounds(503, 9, 79, 13);
-		panel.add(lblSetDrawer);
 		
 		JButton btnGuess = new JButton("Guess");
 		btnGuess.setBounds(483, 325, 85, 21);
