@@ -2,9 +2,7 @@ package offbrand_pictionary;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
-
 import ocsf.client.AbstractClient;
 
 public class Client extends AbstractClient {
