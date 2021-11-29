@@ -7,7 +7,7 @@ import java.io.IOException;
 public class PlayerGUI extends JFrame {
 	
 	public PlayerGUI(String ip) {
-		Client client = new Client();
+		Client client = new Client(ip);
 		client.setHost(ip);
 		client.setPort(8300);
 		try {

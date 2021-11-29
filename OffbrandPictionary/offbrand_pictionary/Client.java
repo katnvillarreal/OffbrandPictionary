@@ -20,6 +20,7 @@ public class Client extends AbstractClient {
 	
 	// Constructor
 	public Client() { super("localhost",8300); }
+	public Client(String host) { super(host,8300); }
 	
 	// Setters of controls
 	public void setLoginControl(LoginControl lc) { this.lc = lc; }
