@@ -74,7 +74,9 @@ public class Server extends AbstractServer {
 			String msg = (String)arg0;
 			if (msg.equals("addPlayer")) {
 				currentPlayers++;
-				if (currentPlayers == numPlayers - 1) {
+//				System.out.println("Number of Players: " + numPlayers);
+//				System.out.println("Current Players: " + currentPlayers);
+				if (currentPlayers == numPlayers) {
 					// Populate Hashmap with players and starting points at zero
 					playerPoints = new HashMap<String, Integer>();
 					for (int k = 0; k < numPlayers; k++) {

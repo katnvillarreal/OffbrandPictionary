@@ -8,7 +8,8 @@ public class GuesserData implements Serializable{
 	
 	// Getters
 	public String getWord() { return word; }
-	public String getGuesser() { return guesser; }
+	public String getGuesser() { 
+		return guesser; }
 	
 	// Setters
 	public void setWord(String word) { this.word = word; }
