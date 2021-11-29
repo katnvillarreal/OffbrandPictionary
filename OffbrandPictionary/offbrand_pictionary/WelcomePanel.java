@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 public class WelcomePanel extends JPanel {
+	public static JButton btnLogIn;
+	public static JButton btnCreateAccount;
+	
 	// Constructor
 	public WelcomePanel(WelcomeControl wc) {
 		setBackground(Color.BLACK);
@@ -20,7 +23,7 @@ public class WelcomePanel extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		JButton btnLogIn = new JButton("Log in");
+		btnLogIn = new JButton("Log in");
 		btnLogIn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnLogIn.setForeground(Color.BLACK);
 		btnLogIn.setBackground(Color.LIGHT_GRAY);
@@ -33,7 +36,7 @@ public class WelcomePanel extends JPanel {
 		lblNewLabel_1.setBounds(296, 11, 215, 125);
 		panel.add(lblNewLabel_1);
 		
-		JButton btnCreateAccount = new JButton("Create Account");
+		btnCreateAccount = new JButton("Create Account");
 		btnCreateAccount.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCreateAccount.setBackground(Color.LIGHT_GRAY);
 		btnCreateAccount.setBounds(344, 323, 167, 33);
@@ -64,5 +67,9 @@ public class WelcomePanel extends JPanel {
 		lblOr.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
 		lblOr.setBounds(382, 203, 94, 31);
 		panel.add(lblOr);
+	}
+	public JButton getCreActButton()
+	{
+		return btnCreateAccount;
 	}
 }

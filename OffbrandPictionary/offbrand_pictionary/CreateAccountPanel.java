@@ -16,6 +16,7 @@ public class CreateAccountPanel extends JPanel{
 	private JTextField tf_Password;
 	private JTextField tf_ReenterPassword;
 	private JLabel lblError;
+	private static JButton btnSubmit;
 	
 	// Getters
 	public String getUsername() { return tf_Username.getText(); }
@@ -97,7 +98,7 @@ public class CreateAccountPanel extends JPanel{
 		lblHurryUp.setBounds(470, 26, 102, 44);
 		panel.add(lblHurryUp);
 		
-		JButton btnSubmit = new JButton("Submit");
+		btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(191, 260, 170, 32);
 		btnSubmit.setForeground(Color.BLACK);
 		btnSubmit.setBackground(Color.LIGHT_GRAY);
@@ -110,6 +111,10 @@ public class CreateAccountPanel extends JPanel{
 		btnCancel.setBounds(191, 303, 170, 32);
 		btnCancel.addActionListener(cap);
 		panel.add(btnCancel);
+	}
+	public JButton getSubmitButton()
+	{
+		return btnSubmit;
 	}
 
 }
