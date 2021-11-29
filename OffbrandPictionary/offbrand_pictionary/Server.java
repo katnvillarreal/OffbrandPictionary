@@ -83,12 +83,11 @@ public class Server extends AbstractServer {
 					
 					// Initiates first turn
 					Thread[] players = this.getClientConnections();
-					int i = rng.nextInt(numPlayers);
+					int i = turns;
 					currentWord = database.getWord(catChoice);
-					turns++;
 					Thread drawer = players[i];
 					DrawerData data = new DrawerData(currentWord);
-					
+					turns++;
 					try { ((ConnectionToClient) drawer).sendToClient(data); } 
 					catch (IOException e) {	e.printStackTrace(); }
 						// Sends "Drawer" to the client that is currently in up from the array
@@ -109,6 +108,7 @@ public class Server extends AbstractServer {
 			}
 			else if (msg.equals("Cancel")) {
 				playerNames.remove(arg1.getName());
+				currentPlayers--;
 				sendToAllClients(playerNames);
 			}
 			else if (msg.equals("WRCancel")) {
@@ -208,7 +208,7 @@ public class Server extends AbstractServer {
 				// Update guesses
 				correctGuesses++;
 				if(correctGuesses == numPlayers-1) {
-					if (currentRound != 2) {
+					if (currentRound != 4) {
 						turn();
 						return;
 					}
@@ -264,7 +264,7 @@ public class Server extends AbstractServer {
 	public void turn() {
 		// Other turns
 		Thread[] players = this.getClientConnections();
-		int i = rng.nextInt(numPlayers);
+		int i = turns;
 		currentWord = database.getWord(catChoice);
 		Thread drawer = players[i];
 		DrawerData data = new DrawerData(currentWord);
