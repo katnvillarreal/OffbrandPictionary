@@ -6,9 +6,9 @@ import java.io.IOException;
 
 public class PlayerGUI extends JFrame {
 	
-	public PlayerGUI() {
+	public PlayerGUI(String ip) {
 		Client client = new Client();
-		client.setHost("localhost");
+		client.setHost(ip);
 		client.setPort(8300);
 		try {
 			client.openConnection();
@@ -70,6 +70,6 @@ public class PlayerGUI extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new PlayerGUI();
+		new PlayerGUI(args[0]);
 	}
 }
