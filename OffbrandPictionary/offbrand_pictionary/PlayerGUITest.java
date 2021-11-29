@@ -13,6 +13,7 @@ import javax.swing.*;
 public class PlayerGUITest {
 
 	private static PlayerGUI pGUI;
+	private static PlayerServer pServ;
 	private static Client client;
 	
 	private static WelcomePanel view1; 
@@ -41,8 +42,8 @@ public class PlayerGUITest {
 	@BeforeClass
 	public static void setUp()
 	{
-		pGUI = new PlayerGUI();
-		
+		pServ = new PlayerServer();
+		pGUI = new PlayerGUI("localhost");
 		client = new Client();
 		client.setHost("localhost");
 		client.setPort(8300);
@@ -98,7 +99,6 @@ public class PlayerGUITest {
 	    container.add(view9, "9");
 		
 		cardLayout.show(container, "1");
-	
 		pGUI.add(container, BorderLayout.CENTER);
 		pGUI.setSize(650, 440);
 		pGUI.setResizable(false);
