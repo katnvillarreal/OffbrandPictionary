@@ -18,19 +18,16 @@ public class CreateAccountDataTest extends JPanel{
 
 	/* 
 	 * Tests required:
-	 * 		* Login correct - uses submit
-	 * 		* Username taken - uses submit
-	 * 		* Password doesn't match - uses submit
-	 * 		* leave page - uses cancel
+	 * 		* CreateAccountDataTest()
 	 */
-	private CreateAccountControl gac;
+	
 	private CreateAccountData gad;
-	private CreateAccountPanel gap;
+	
 
 	/*
-	 * CorrectLoginTest
+	 * CreateAccountDataTest()
 	 * 		* Randomly generates a username and password and uses the random password as the reentered password
-	 * 		* Outcome - Account created successfully
+	 * 		* Outcome - Password, username, and re entered password are initialized correctly
 	 */
 	@Test
 	public void CreateAccountDataTest() {
@@ -45,6 +42,11 @@ public class CreateAccountDataTest extends JPanel{
 		assertNotNull(gad.getRePassword());
 	}
 	
+	/*
+	 * Class: generateRandomWords(int numberofWords)
+	 * 	generates a random array of string characters
+	 * 	input to this function determines the number of random words created
+	 */
 	public static String[] generateRandomWords(int numberOfWords)
 	{
 	    String[] randomStrings = new String[numberOfWords];
